@@ -1,4 +1,6 @@
 # Large Language Models as Zero-shot Dialogue State Tracker through Function Calling
+This repository provides the official PyTorch implementation of the following paper: 
+> [**Large Language Models as Zero-shot Dialogue State Tracker through Function Calling**](https://arxiv.org/abs/2402.10466) <br>
 
 ## Overview
 <p align="center"><img src="./pics/overview.png" alt="teaser" width="500px" /></p>
@@ -9,7 +11,7 @@ Zero-shot DST performance comparison} among (1) previous domain transfer approac
 
 ## Preparation
 Before running the scripts, follow these steps to set up your environment:
-1. Data Directory Setup: Place the `data` directory in the root (main) directory of the project.
+1. Data Directory Setup: Unzip the `data.zip` file and place the `data` directory in the root (main) directory of the project.
 2. Conda Environment Setup: `pip install -r requirements.txt`
 3. Environment Variable Configuration: Set the following environment variables for local model inference in each evaluation script:
 ```
@@ -18,12 +20,7 @@ export HF_HOME='/XXX/.cache/huggingface'
 export OPENAI_API_KEY='XXXX'
 ```
 
-## Fine-tuning
-
-1. Fine-tuning data sampling: `sh create_data.sh`
-2. Finetune FnCTOD-Llama: `sh finetune.sh`
-
-## Inference
+## In-context Prompting
 Execute the following scripts located in the `./sh_folders/` directory to run inference with different models.
    1. `inference_chatgpt.sh`
    2. `inference_fnctod-llama.sh`
@@ -34,6 +31,12 @@ Execute the following scripts located in the `./sh_folders/` directory to run in
    7. `inference_llama-2-7b.sh`
    8. `inference_llama-2-13b.sh`
    9. `inference_llama-2-70b.sh`
+
+## Prompt-based Fine-tuning
+
+1. Fine-tuning data sampling: `sh create_data.sh`
+2. Finetune FnCTOD-Llama: `sh finetune.sh`
+
 
 ## Citation
 If you find this work useful, please cite [our paper](https://arxiv.org/abs/2402.10466):
