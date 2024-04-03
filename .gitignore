@@ -1,0 +1,13 @@
+# directories
+__deprecated__/
+**/__pycache__/
+data/
+wandb/
+ckpt/
+outputs/
+
+# files
+*out
+*.pyc
+*.bin
+*.slurm
