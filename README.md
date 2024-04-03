@@ -3,7 +3,7 @@ This repository provides the official PyTorch implementation of the following pa
 > [**Large Language Models as Zero-shot Dialogue State Tracker through Function Calling**](https://arxiv.org/abs/2402.10466) <br>
 
 ## Overview
-<p align="center"><img src="./pics/overview.png" alt="teaser" width="500px" /></p>
+<p align="center"><img src="./pics/overview.png" alt="teaser" width="800px" /></p>
 
 We introduce a novel approach FnCTOD, to address zero-shot DST with LLMs. Our method seamlessly integrates DST as a part of the assistant's output during chat completion. Specifically, we treat the schema of each task-oriented dialogue domain as a specific function, and DST for this domain as the process of ``calling'' the corresponding function. We thus instruct LLMs to generate function calls along with the response in the assistant's output. To achieve this, we convert the domain schema into function specifications, which include the function's description and required arguments, and incorporate them into the **system prompt** of the LLM. Additionally, we integrate these function calls into the assistant's output within the *dialogue context*.
 
