@@ -36,8 +36,8 @@ Execute the following scripts located in the `./sh_folders/` directory to run in
 
 ## Prompt-based Fine-tuning
 
-1. Fine-tuning data sampling: `sh create_data.sh`
-2. Finetune FnCTOD-Llama: `sh finetune.sh`
+1. Fine-tuning data collection: `sh create_data.sh`
+2. Finetune FnCTOD-Llama2: `sh finetune.sh`
 
 
 ## Citation
