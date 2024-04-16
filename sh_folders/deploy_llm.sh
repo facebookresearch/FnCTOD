@@ -1,6 +1,6 @@
 
-export TRANSFORMERS_CACHE='XXX/.cache/huggingface/transformers'
-export HF_HOME='XXX/.cache/huggingface'
+export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
+export HF_HOME='HOME_PATH/.cache/huggingface'
 
 devices=0
 

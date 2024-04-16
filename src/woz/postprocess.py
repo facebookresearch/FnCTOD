@@ -130,7 +130,7 @@ def get_data_split(n_train=-1, n_test=-1, return_list=False):
     if not os.path.exists(f"{processed_data_path}/test_raw_dials.json"):
         with open(f"{preprocessed_data_path}/woz_test.json", 'r') as file:
             test_data = json.load(file)
-            test_data = process_data(test_data, split="test", reader=reader)
+            test_data = process_data(test_data, split="test")
         with open(f"{processed_data_path}/test_raw_dials.json", 'w') as file:
             json.dump(test_data, file, indent=4)
     else:
@@ -278,10 +278,10 @@ if __name__ == "__main__":
     reader = None
 
     # component 1: process the normalized_schema.yml
-    normalized_schema = load_schema(args.dataset)
+    normalized_schema = load_schema()
     
     # component 2: post-process the dialogue data
-    train_data, test_data = get_data_split(args.dataset, reader)
+    train_data, test_data = get_data_split()
 
     # component 3: retrieve examples for the domain combinations              
     # examples = load_examples(args.dataset, train_data)

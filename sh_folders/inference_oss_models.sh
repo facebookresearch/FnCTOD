@@ -1,11 +1,11 @@
-export TRANSFORMERS_CACHE='XXX/.cache/huggingface/transformers'
-export HF_HOME='XXX/.cache/huggingface'
+export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
+export HF_HOME='HOME_PATH/.cache/huggingface'
 
-devices=5
+devices=6
 
 cd ..
 
-# main DST results on multiwoz2.1
+# main DST results
 for dataset_version in 2.1
 do
     for split in test
@@ -28,7 +28,7 @@ do
                                     do
                                         for function_type in json # text
                                         do
-                                            for model in vicuna-7b-v1.5
+                                            for model in baichuan-13b-chat vicuna-7b-v1.5 vicuna-13b-v1.5 llama-2-7b-chat llama-2-13b-chat llama-2-13b-chat  zephyr-7b-beta
                                             do
                                                 CUDA_VISIBLE_DEVICES=$devices python -m src.multiwoz.inference \
                                                                                         --dataset_version $dataset_version \
@@ -60,8 +60,8 @@ do
     done
 done
 
-# e2e with generated bs on 2.2
-for dataset_version in 2.2
+# e2e with generated bs
+for dataset_version in 2.1
 do
     for split in test
     do
@@ -75,7 +75,7 @@ do
                     do
                         for add_prev in True
                         do
-                            for task in e2e
+                            for task in e2e # dst nlg
                             do
                                 for dst_nshot in 5
                                 do
@@ -83,7 +83,7 @@ do
                                     do
                                         for function_type in json # text
                                         do
-                                            for model in vicuna-7b-v1.5
+                                            for model in baichuan-13b-chat vicuna-7b-v1.5 vicuna-13b-v1.5 llama-2-7b-chat llama-2-13b-chat llama-2-13b-chat  zephyr-7b-beta
                                             do
                                                 CUDA_VISIBLE_DEVICES=$devices python -m src.multiwoz.inference \
                                                                                         --dataset_version $dataset_version \

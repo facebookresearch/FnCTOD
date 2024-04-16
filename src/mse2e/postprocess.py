@@ -650,7 +650,7 @@ if __name__ == "__main__":
     train_data, test_data = get_data_split(reader)
 
     # component 3: retrieve examples for the domain combinations              
-    examples = load_examples(train_data)
+    # examples = load_examples(train_data)
     
     
 

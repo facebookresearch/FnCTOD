@@ -98,7 +98,7 @@ def load_schema(dataset_version="2.1"):
     data_path = f"{processed_data_path}/normalized_schema.yml"
 
     if not os.path.exists(data_path):
-        with open(f"./data/multiwoz/data/schema.json", "r") as file:
+        with open(f"./data/multiwoz/schema.json", "r") as file:
             schema = json.load(file)
 
         normalized_schema = normalize_domain_slot(schema)

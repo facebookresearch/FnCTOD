@@ -1,4 +1,4 @@
-export TRANSFORMERS_CACHE='XXX/.cache/huggingface/transformers/'
+export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers/'
 
 cd ..
 

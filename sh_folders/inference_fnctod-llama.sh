@@ -1,11 +1,11 @@
-export TRANSFORMERS_CACHE='XXX/.cache/huggingface/transformers'
-export HF_HOME='XXX/.cache/huggingface'
+export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
+export HF_HOME='HOME_PATH/.cache/huggingface'
 
-devices=6
+devices=3
 
 cd ..
 
-# main DST results on multiwoz2.1
+# main DST results
 for dataset_version in 2.1
 do
     for split in test
@@ -22,13 +22,13 @@ do
                         do
                             for task in dst
                             do
-                                for dst_nshot in 5
+                                for dst_nshot in 0
                                 do
                                     for nlg_nshot in 0
                                     do
                                         for function_type in json # text
                                         do
-                                            for model in llama-2-7b-chat
+                                            for model in fnctod-llama2-13b-200
                                             do
                                                 CUDA_VISIBLE_DEVICES=$devices python -m src.multiwoz.inference \
                                                                                         --dataset_version $dataset_version \
@@ -60,8 +60,8 @@ do
     done
 done
 
-# e2e with generated bs on multiwoz2.2
-for dataset_version in 2.2
+# e2e results
+for dataset_version in 2.1
 do
     for split in test
     do
@@ -77,13 +77,13 @@ do
                         do
                             for task in e2e # dst nlg
                             do
-                                for dst_nshot in 5
+                                for dst_nshot in 0
                                 do
                                     for nlg_nshot in 5
                                     do
-                                        for function_type in json # text
+                                        for function_type in json
                                         do
-                                            for model in llama-2-7b-chat
+                                            for model in fnctod-llama2-13b-200
                                             do
                                                 CUDA_VISIBLE_DEVICES=$devices python -m src.multiwoz.inference \
                                                                                         --dataset_version $dataset_version \

@@ -50,10 +50,11 @@ def schema2function(service, template="llama2", rename_mapping={}):
             parameter = {}
             parameter["description"] = slot["description"]
             parameter["type"] = "string"
-            if any([v in slot["possible_values"] for v in ["yes", "no"]]):
-                parameter["type"] = "boolean"
-            elif any([v in slot["possible_values"] for v in ['1', '2', '3', '4', '5']]):
-                parameter["type"] = "integer"
+            if "possible_values" in slot:
+                if any([v in slot["possible_values"] for v in ["yes", "no"]]):
+                    parameter["type"] = "boolean"
+                elif any([v in slot["possible_values"] for v in ['1', '2', '3', '4', '5']]):
+                    parameter["type"] = "integer"
             if slot_name in ["arrive", "leave", "time"]:
                 if template != "chatgpt":
                     parameter["type"] = "time (HH:mm)"

@@ -379,13 +379,13 @@ if __name__ == "__main__":
     reader = Reader(f"./data/pre-training_corpora/raw_data/CamRest676")
 
     # component 1: process the normalized_schema.yml
-    normalized_schema = load_schema(args.dataset)
+    normalized_schema = load_schema()
     
     # component 2: post-process the dialogue data
-    train_data, test_data = get_data_split(args.dataset, reader)
+    train_data, test_data = get_data_split(reader)
 
     # component 3: retrieve examples for the domain combinations              
-    # examples = load_examples(args.dataset, train_data)
+    # examples = load_examples(train_data)
     
     
 
