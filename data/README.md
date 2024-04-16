@@ -1,19 +1,7 @@
 We thank the authors of [PPTOD](https://github.com/awslabs/pptod) for gathering up the publicly available human-written multi-turn dialogue corpora.
 
-# Pre-training Corpora Preparation:
-We thank the [Salesforce team](https://github.com/jasonwu0731/ToD-BERT) for gathering up the publicly available human-written multi-turn dialogue corpora. We download the raw data from their released google drive link. To run the pre-training data preparation scripts, please first install gdown library as:
-```yaml
-pip3 install gdown
-```
-
-Then, run the following commands.
-```yaml
-cd pre-training_corpora
-sh download_raw_data.sh
-```
-
 # Preparation of Benchmark TOD Task Datasets:
-## 1. MultiWOZ Data:
+## MultiWOZ Data:
 The MultiWOZ dataset is used for both end-to-end task-oriented dialogue modelling and dialogue state tracking tasks.
 ### (1) Preparation:
 To acquire the processed dataset, you can run the following commands. 
@@ -62,3 +50,18 @@ We use json to store the data. Each dialogue session is represented as a list of
 * **aspn** - The system action.
 * **turn_num** - This argument indicates the turn position in the dialogue session, e.g., if turn_num = 0 means this is the very first turn in the whole dialogue session.
 * **db** - The database query result.
+
+
+# Pre-training Corpora Preparation:
+We thank the [Salesforce team](https://github.com/jasonwu0731/ToD-BERT) for gathering up the publicly available human-written multi-turn dialogue corpora. We download the raw data from their released google drive link. To run the pre-training data preparation scripts, please first install gdown library as:
+```yaml
+pip3 install gdown
+```
+
+Then, run the following commands.
+```yaml
+cd pre-training_corpora
+sh download_raw_data.sh
+```
+
+
