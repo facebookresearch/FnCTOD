@@ -50,7 +50,7 @@ sh finetune.sh
 ```
 
 ## Acknowledgements
-1. [PPTOD](https://github.com/awslabs/pptod): upon which our data processing code is buitlt. 
+1. [PPTOD](https://github.com/awslabs/pptod): upon which our data processing code is built. 
 2. [FastChat](https://github.com/lm-sys/FastChat): we borrowed the chat templates from this repository.
 
 We thank the authors for their wonderful work.
