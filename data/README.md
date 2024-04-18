@@ -58,10 +58,12 @@ We download the raw data of several publicly available human-written multi-turn 
 pip3 install gdown
 ```
 
-Then, run the following commands.
+Then, run the following commands to download the raw data.
 ```yaml
 cd pre-training_corpora
 sh download_raw_data.sh
 ```
+
+For the following processing of the raw data, please refer to [Prompt-based Fine-tuning](https://github.com/facebookresearch/FnCTOD/tree/main?tab=readme-ov-file#prompt-based-fine-tuning) seciton in the main README.
 
 
