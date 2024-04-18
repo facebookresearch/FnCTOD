@@ -108,8 +108,8 @@ class MultiWozData:
             processed_data_path = 'multi-woz-fine-processed'
         elif self.data_version == '2.1':
             processed_data_path = 'multi-woz-2.1-fine-processed'
-        elif self.data_version == '2.3':
-            processed_data_path = 'multi-woz-2.3-fine-processed'
+        elif self.data_version == '2.2':
+            processed_data_path = 'multi-woz-2.2-fine-processed'
         elif self.data_version == '2.4':
             processed_data_path = 'multi-woz-2.4-fine-processed'
 

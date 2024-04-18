@@ -47,6 +47,9 @@ if __name__ == '__main__':
 
     elif args.data_version == "2.1":
         from config21 import Config
+    
+    elif args.data_version == "2.2":
+        from config22 import Config
 
     else:
         raise Exception("Wrong MultiWOZ version!")

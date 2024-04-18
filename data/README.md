@@ -7,13 +7,13 @@ The MultiWOZ dataset is used for both end-to-end task-oriented dialogue modellin
 To acquire the processed dataset, you can run the following commands. 
 ```yaml
 cd ./multiwoz/
-chmod +x ./download_data.sh
-chmod +x ./data_preparation2.0.sh
-chmod +x ./data_preparation2.1.sh
+chmod +x ./download_data.sh 
+chmod +x ./data_preparation2.1.sh 
+chmod +x ./data_preparation2.2.sh 
 
-sh ./download_data.sh
-sh ./data_preparation2.0.sh # prepare data for multiwoz2.0 version
-sh ./data_preparation2.1.sh # prepare data for multiwoz2.1 version
+sh ./download_data.sh # download the necessary data
+sh ./data_preparation2.1.sh # prepare the data for multiwoz 2.1
+sh ./data_preparation2.2.sh # prepare the data for multiwoz 2.2
 ```
 Take a coffee, this process will take around 60 minutes.
 
@@ -31,12 +31,12 @@ Take a coffee, this process will take around 60 minutes.
     },
     {
         "dial_id": "PMUL1170",
-        "user": "<sos_u> i would like to go to peterborough and leave after 12:45 , i have to attend a meeting beforehand . <eos_u>",
-        "resp": "<sos_r> [value_id] leaves at [value_leave] on [value_day] . will that work for you ? <eos_r>",
-        "bspn": "<sos_b> [train] day wednesday departure cambridge leave 12:45 destination peterborough <eos_b>",
-        "aspn": "<sos_a> [train] [inform] day leave id <eos_a>",
+        "user": " i would like to go to peterborough and leave after 12:45 , i have to attend a meeting beforehand .",
+        "resp": "[value_id] leaves at [value_leave] on [value_day] . will that work for you ?",
+        "bspn": "[train] day wednesday departure cambridge leave 12:45 destination peterborough",
+        "aspn": "[train] [inform] day leave id",
         "turn_num": 1,
-        "db": "<sos_db> [db_3] <eos_db>",
+        "db": "[db_3]",
     },
     ...
 ]
@@ -53,7 +53,7 @@ We use json to store the data. Each dialogue session is represented as a list of
 
 
 # Pre-training Corpora Preparation:
-We thank the [Salesforce team](https://github.com/jasonwu0731/ToD-BERT) for gathering up the publicly available human-written multi-turn dialogue corpora. We download the raw data from their released google drive link. To run the pre-training data preparation scripts, please first install gdown library as:
+We download the raw data of several publicly available human-written multi-turn dialogue corpora collected by [ToD-BERT](https://github.com/jasonwu0731/ToD-BERT). To run the pre-training data preparation scripts, please first install gdown library as:
 ```yaml
 pip3 install gdown
 ```

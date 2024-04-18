@@ -11,9 +11,5 @@ cd ..
 mv ./UBAR-MultiWOZ-master/data .
 mv ./UBAR-MultiWOZ-master/db ./data/
 rm -r UBAR-MultiWOZ-master
-cd ./utlis
-python postprocessing_dataset.py
-cd ..
-cp special_token_list.txt ./data/multi-woz-fine-processed/special_token_list.txt
 mv data/ ./ubar-preprocessing/
 cp -r ./ubar-preprocessing/data/db ./ubar-preprocessing

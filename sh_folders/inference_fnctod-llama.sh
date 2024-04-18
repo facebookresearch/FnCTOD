@@ -61,7 +61,7 @@ do
 done
 
 # e2e results
-for dataset_version in 2.1
+for dataset_version in 2.2
 do
     for split in test
     do
