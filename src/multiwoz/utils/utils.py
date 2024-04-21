@@ -73,11 +73,11 @@ for acts in dialog_acts.values():
 slot_renaming = {
     "[train]": {
         "arrive": "arrive_by",
-        "leave": "leave_at",
+        "leave": "leave_at_or_after",
     },
     "[taxi]": {
         "arrive": "arrive_by",
-        "leave": "leave_at",
+        "leave": "leave_at_or_after",
     },
     "[hotel]": {
         "type": "accommodation_type"
@@ -86,11 +86,11 @@ slot_renaming = {
 slot_renaming_reverse = {
     "[train]": {
         "arrive_by": "arrive",
-        "leave_at": "leave"
+        "leave_at_or_after": "leave"
     },
     "[taxi]": {
         "arrive_by": "arrive",
-        "leave_at": "leave"
+        "leave_at_or_after": "leave"
     },
     "[hotel]": {
         "accommodation_type": "type"

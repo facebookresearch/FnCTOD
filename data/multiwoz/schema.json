@@ -183,8 +183,12 @@
     "slots": [
       {
         "name": "train-arriveby",
-        "description": "arrival time of the train",
-        "possible_values": [],
+        "description": "arrival time of the train in the format of \"HH:mm\"",
+        "possible_values": [
+          "11:15",
+          "13:20",
+          "15:45"
+        ],
         "is_categorical": false
       },
       {
@@ -242,8 +246,12 @@
       },
       {
         "name": "train-leaveat",
-        "description": "leaving time for the train",
-        "possible_values": [],
+        "description": "leaving time for the train in the format of \"HH:mm\"",
+        "possible_values": [
+          "08:10",
+          "12:15",
+          "15:50"
+        ],
         "is_categorical": false
       },
       {
@@ -287,7 +295,7 @@
         "is_categorical": false
       }
     ],
-    "description": "find trains that take you to places",
+    "description": "find trains that take you to places and book train tickets",
     "intents": [
       {
         "name": "find_train",
@@ -428,6 +436,14 @@
       {
         "name": "restaurant-food",
         "description": "the cuisine of the restaurant you are looking for",
+        "possible_values": [
+          "chinese",
+          "american",
+          "mexican",
+          "japanese",
+          "european",
+          "oceanian"
+        ],
         "is_categorical": false
       },
       {
@@ -467,8 +483,12 @@
       },
       {
         "name": "restaurant-booktime",
-        "description": "time of the restaurant booking",
-        "possible_values": [],
+        "description": "time of the restaurant booking in the format of \"HH:mm\"",
+        "possible_values": [
+          "12:00",
+          "13:10",
+          "18:30"
+        ],
         "is_categorical": false
       },
       {
@@ -569,26 +589,34 @@
     "slots": [
       {
         "name": "taxi-leaveat",
-        "description": "leaving time of taxi",
-        "possible_values": [],
+        "description": "leaving time of taxi in the format of \"HH:mm\"",
+        "possible_values": [
+          "08:10",
+          "12:15",
+          "15:50"
+        ],
         "is_categorical": false
       },
       {
         "name": "taxi-destination",
-        "description": "destination of taxi",
+        "description": "destination of taxi (this should be the full name of the destination rather than its specific street address)",
         "possible_values": [],
         "is_categorical": false
       },
       {
         "name": "taxi-departure",
-        "description": "departure location of taxi",
+        "description": "departure location of taxi (this should be the full name of the location rather than its specific street address)",
         "possible_values": [],
         "is_categorical": false
       },
       {
         "name": "taxi-arriveby",
-        "description": "arrival time of taxi",
-        "possible_values": [],
+        "description": "arrival time of taxi in the format of \"HH:mm\"",
+        "possible_values": [
+          "11:15",
+          "13:20",
+          "15:45"
+        ],
         "is_categorical": false
       },
       {
@@ -602,7 +630,7 @@
         "is_categorical": false
       }
     ],
-    "description": "rent cheap cabs to avoid traffic",
+    "description": "book taxis to travel between places",
     "intents": [
       {
         "name": "book_taxi",

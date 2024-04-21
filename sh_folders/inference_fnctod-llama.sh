@@ -5,7 +5,7 @@ devices=3
 
 cd ..
 
-# main DST results
+# main DST results on multiwoz 2.1
 for dataset_version in 2.1
 do
     for split in test
@@ -60,7 +60,7 @@ do
     done
 done
 
-# e2e results
+# e2e results with generated bs on multiwoz 2.2
 for dataset_version in 2.2
 do
     for split in test

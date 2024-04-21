@@ -126,6 +126,7 @@ if __name__ == '__main__':
                                                      return_list=False)
     schema = load_schema(args.dataset_version)
     examples = load_examples(args.dataset_version, train_data)
+
     if args.split == 'val':
         eval_data = val_data
     elif args.split == 'test':
@@ -281,7 +282,7 @@ if __name__ == '__main__':
                                                             required=["content"],
                                                             temperature=args.temperature,
                                                             top_p=args.top_p,
-                                                            max_tokens=4,
+                                                            max_tokens=8,
                                                             n_seqs=1,
                                                             )
                     dspn_gen = chat_response[0]["content"]
@@ -422,7 +423,7 @@ if __name__ == '__main__':
                                                             examples=example_messages,
                                                             temperature=args.temperature,
                                                             top_p=args.top_p,
-                                                            max_tokens=80,
+                                                            max_tokens=128,
                                                             n_seqs=1,
                                                             )
                     assistant_message = chat_response[0]                    

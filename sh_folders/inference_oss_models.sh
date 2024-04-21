@@ -1,7 +1,7 @@
 export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
 export HF_HOME='HOME_PATH/.cache/huggingface'
 
-devices=6
+devices=2,4,6
 
 cd ..
 
@@ -28,7 +28,7 @@ do
                                     do
                                         for function_type in json # text
                                         do
-                                            for model in baichuan-13b-chat vicuna-7b-v1.5 vicuna-13b-v1.5 llama-2-7b-chat llama-2-13b-chat llama-2-13b-chat  zephyr-7b-beta
+                                            for model in zephyr-7b-beta vicuna-7b-v1.5 vicuna-13b-v1.5 baichuan-13b-chat llama-2-7b-chat llama-2-13b-chat llama-2-13b-chat
                                             do
                                                 CUDA_VISIBLE_DEVICES=$devices python -m src.multiwoz.inference \
                                                                                         --dataset_version $dataset_version \
@@ -60,7 +60,7 @@ do
     done
 done
 
-# e2e with generated bs
+# e2e with generated bs on multiwoz 2.2
 for dataset_version in 2.2
 do
     for split in test
@@ -83,7 +83,7 @@ do
                                     do
                                         for function_type in json # text
                                         do
-                                            for model in baichuan-13b-chat vicuna-7b-v1.5 vicuna-13b-v1.5 llama-2-7b-chat llama-2-13b-chat llama-2-13b-chat  zephyr-7b-beta
+                                            for model in zephyr-7b-beta baichuan-13b-chat vicuna-7b-v1.5 vicuna-13b-v1.5 llama-2-7b-chat llama-2-13b-chat llama-2-13b-chat
                                             do
                                                 CUDA_VISIBLE_DEVICES=$devices python -m src.multiwoz.inference \
                                                                                         --dataset_version $dataset_version \

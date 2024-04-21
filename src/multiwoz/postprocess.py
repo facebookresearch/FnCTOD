@@ -13,16 +13,16 @@ from src.multiwoz.utils import *
 from src.multiwoz.utils.config import *
 from src.multiwoz.utils.reader import *
 from src.multiwoz.utils.utils import (paser_aspn_to_dict, 
-                                              paser_dict_to_bs,
-                                              paser_bs_to_dict,
-                                              paser_dict_to_list,
-                                              dialog_acts,
-                                              requestable_slots,
-                                              informable_slots,
-                                              all_reqslot,
-                                              all_slots,
-                                              all_domain
-                                              )
+                                        paser_dict_to_bs,
+                                        paser_bs_to_dict,
+                                        paser_dict_to_list,
+                                        dialog_acts,
+                                        requestable_slots,
+                                        informable_slots,
+                                        all_reqslot,
+                                        all_slots,
+                                        all_domain
+                                        )
 from src.utils import add_bracket, remove_bracket
 
 
@@ -63,11 +63,14 @@ def normalize_domain_slot(schema):
             if slot_name == 'booktime':
                 slot_name = 'time'
             if slot_name == 'arriveby':
-                slot_name = 'arrive'
+                slot_name = 'arrive_by'
             if slot_name == 'leaveat':
-                slot_name = 'leave'
+                slot_name = 'leave_at_or_after'
             if slot_name == 'ref':
                 slot_name = 'reference'
+            if slot_name == "type" and domain == "hotel":
+                slot_name = 'accommodation_type'
+            
             domain_slot = "-".join([domain, slot_name])
             slot['name'] = domain_slot
             normalized_slots.append(slot)
@@ -113,7 +116,9 @@ def load_schema(dataset_version="2.1"):
 
                 if slot_name in informable_slots[domain]:
                     slot["is_informable"] = True
-                else:
+                elif slot_name in ["accommodation_type", "leave_at_or_after", "arrive_by"]:
+                    slot["is_informable"] = True
+                else:    
                     slot["is_informable"] = False
 
                 if slot_name in requestable_slots[domain]:
