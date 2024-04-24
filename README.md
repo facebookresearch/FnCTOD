@@ -55,6 +55,9 @@ sh finetune.sh
 
 We thank the authors for their wonderful work.
 
+## License
+See the [LICENSE](./LICENSE) file for details about the license under which this code is made available.
+
 ## Citation
 If you find this work useful, please cite [our paper](https://arxiv.org/abs/2402.10466):
 ```
