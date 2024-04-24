@@ -5,7 +5,7 @@ en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_
 evaluate==0.4.1
 fastapi==0.95.2
 huggingface-hub==0.22.2
-Jinja2==3.1.2
+Jinja2==3.1.3
 numpy==1.24.3
 openai==0.27.7
 peft @ git+https://github.com/huggingface/peft.git@412d7bc985f52225be8d9a7abc6a0cf2d71b2415
@@ -21,5 +21,5 @@ spacy-legacy==3.0.12
 spacy-loggers==1.0.4
 tiktoken==0.6.0
 tokenizers==0.15.2
-torch==2.1.0+cu121
+torch==2.1.0
 transformers==4.39.3
