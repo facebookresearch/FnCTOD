@@ -29,7 +29,7 @@ outlined on that page and do not file a public issue.
 ## Coding Style  
 * 4 spaces for indentation rather than tabs
 * 80 character line length
-* PEP8 formatting
+* PEP8 formatting using `black`. (Black is a PEP 8 compliant opinionated formatter.)
 
 ## License
 By contributing to this repository, you agree that your contributions will be licensed

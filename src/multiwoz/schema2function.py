@@ -1,4 +1,3 @@
-
 def schema2function(service, template="llama2", rename_mapping={}):
     # convert the schema to the function call format in GPT-3.5/4.
     # https://openai.com/blog/function-calling-and-other-api-updates
@@ -26,7 +25,7 @@ def schema2function(service, template="llama2", rename_mapping={}):
             }
         }
     """
-    
+
     function = {
         "name": "",
         "description": "",
@@ -36,13 +35,13 @@ def schema2function(service, template="llama2", rename_mapping={}):
             "required": [],
         },
     }
-    
+
     service_name = service["service_name"]
     if service_name in rename_mapping:
         function["name"] = rename_mapping[service_name]
     else:
         function["name"] = service_name
-    
+
     contain_name_parameter = False
     for slot in service["slots"]:
         if slot["is_informable"]:
@@ -53,7 +52,9 @@ def schema2function(service, template="llama2", rename_mapping={}):
             if "possible_values" in slot:
                 if any([v in slot["possible_values"] for v in ["yes", "no"]]):
                     parameter["type"] = "boolean"
-                elif any([v in slot["possible_values"] for v in ['1', '2', '3', '4', '5']]):
+                elif any(
+                    [v in slot["possible_values"] for v in ["1", "2", "3", "4", "5"]]
+                ):
                     parameter["type"] = "integer"
             if slot_name in ["arrive", "leave", "time"]:
                 if template != "chatgpt":
@@ -71,7 +72,7 @@ def schema2function(service, template="llama2", rename_mapping={}):
                 contain_name_parameter = True
 
             function["parameters"]["properties"][slot_name] = parameter
-            
+
     function["parameters"]["required"] = service["intents"][0]["required_slots"]
 
     description = service["description"] + ". "
@@ -79,8 +80,10 @@ def schema2function(service, template="llama2", rename_mapping={}):
         "Set the value as : 'dontcare' ONLY when the user EXPLICITLY states they have no specific preference for a parameter.",
     ]
     if contain_name_parameter:
-        CAUTIONS.append("Always record the exact value of the 'name' parameter when mentioned. Avoid using pronouns or coreferences like 'the hotel' or 'the restaurant.'")
+        CAUTIONS.append(
+            "Always record the exact value of the 'name' parameter when mentioned. Avoid using pronouns or coreferences like 'the hotel' or 'the restaurant.'"
+        )
     description += " ".join(CAUTIONS)
-    function["description"] =  description
+    function["description"] = description
 
     return function

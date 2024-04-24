@@ -4,13 +4,14 @@ import numpy as np
 import random
 import argparse
 import logging
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 from src.utils import *
 from src.sgd.postprocess import (
-    get_data_split, 
-    load_schema, 
+    get_data_split,
+    load_schema,
 )
 from chatbots.conversation import Conversation
 from src.utils import *
@@ -19,14 +20,25 @@ from chatbots.llm import *
 from src.sgd.schema2function import schema2function
 
 
-if __name__ == '__main__':
-    
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # arguments for dataset
-    parser.add_argument('--split', type=str, default='test', choices=['train', 'test']) #
-    parser.add_argument('--template', type=str, default="llama2", help='the conversation template of data') #
-    parser.add_argument('--all_turn', type=str2bool, default=False, help='if add all turns of function calls') #
+    parser.add_argument(
+        "--split", type=str, default="test", choices=["train", "test"]
+    )  #
+    parser.add_argument(
+        "--template",
+        type=str,
+        default="llama2",
+        help="the conversation template of data",
+    )  #
+    parser.add_argument(
+        "--all_turn",
+        type=str2bool,
+        default=False,
+        help="if add all turns of function calls",
+    )  #
 
     args, unknown = parser.parse_known_args()
     print(args)
@@ -39,32 +51,33 @@ if __name__ == '__main__':
         data = train_data
     elif args.split == "dev":
         data = dev_data
-    elif args.split == 'test':
+    elif args.split == "test":
         data = test_data
 
     # save data path
     data_path = f"./data/pre-training_corpora/prompting_data/sgd/"
     if not os.path.exists(data_path):
         os.makedirs(data_path, exist_ok=True)
-    save_path =f"{data_path}/{args.split}-{args.template}-allturn{args.all_turn}.json"
+    save_path = f"{data_path}/{args.split}-{args.template}-allturn{args.all_turn}.json"
 
     # the conversation template
-    conversation = Conversation(template_name=args.template,
-                                function_type="json",
-                                function_call_prefix=fc_prefix,
-                                function_call_suffix=fc_suffix)
+    conversation = Conversation(
+        template_name=args.template,
+        function_type="json",
+        function_call_prefix=fc_prefix,
+        function_call_suffix=fc_suffix,
+    )
 
     # all the processed dials for each task
     processed_data = []
 
     # prepare input and output for each task
     for dial_id, turns in data.items():
-
         functions = []
         all_domains = turns[-1]["all_domains"]
         for domain in all_domains:
             for service in schema:
-                if service['service_name'] == domain[1:-1]:
+                if service["service_name"] == domain[1:-1]:
                     function = schema2function(service)
                     functions.append(function)
                     break
@@ -74,8 +87,7 @@ if __name__ == '__main__':
         system_messages = [random.choice(tod_instructions)]
         system_messages.extend(tod_notes)
         system_message = "\n".join(system_messages)
-        messages.append({"role": "system", 
-                         "content": system_message})
+        messages.append({"role": "system", "content": system_message})
 
         # add conversation messages
         for turn in turns:
@@ -88,23 +100,27 @@ if __name__ == '__main__':
             bs_dict = turn["bspn_dict"]
 
             function_call_dict = {}
-            if args.all_turn: # add function call at all the turns
+            if args.all_turn:  # add function call at all the turns
                 if turn_domain in bs_dict:
                     function_call_dict = {
                         "function": turn_domain[1:-1],
-                        "arguments": bs_dict[turn_domain]
+                        "arguments": bs_dict[turn_domain],
                     }
-            else: # only add function call when there are update
+            else:  # only add function call when there are update
                 if turn_domain in turn_bs_dict:
                     function_call_dict = {
                         "function": turn_domain[1:-1],
-                        "arguments": bs_dict[turn_domain]
+                        "arguments": bs_dict[turn_domain],
                     }
 
             if function_call_dict:
-                messages.append({"role": "assistant", 
-                                 "content": resp, 
-                                 "function_call": function_call_dict})
+                messages.append(
+                    {
+                        "role": "assistant",
+                        "content": resp,
+                        "function_call": function_call_dict,
+                    }
+                )
             else:
                 messages.append({"role": "assistant", "content": resp})
 
@@ -119,17 +135,18 @@ if __name__ == '__main__':
         conversation_prompt = []
         for message in messages[1:]:
             turn_prompt = conversation.get_conversation([message], predict=False)
-            conversation_prompt.append({
-                "role":  message["role"],
-                "content": turn_prompt
-            })
-        
-        processed_data.append({
-            "system": system_prompt,
-            "functions": functions,
-            "conversation": conversation_prompt
-        })
-    
+            conversation_prompt.append(
+                {"role": message["role"], "content": turn_prompt}
+            )
+
+        processed_data.append(
+            {
+                "system": system_prompt,
+                "functions": functions,
+                "conversation": conversation_prompt,
+            }
+        )
+
     # summarize
     print(f"Total dialogues: {len(data)}!")
     print(f"Total samples: {len(processed_data)}")

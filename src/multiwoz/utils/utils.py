@@ -15,51 +15,162 @@ import logging
 
 from src.multiwoz.utils.ontology import *
 
-num2word = {"1": "one", "2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine", "10": "ten"}
+num2word = {
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+    "10": "ten",
+}
 
 all_domain = [
-    "[taxi]","[police]","[hospital]","[hotel]","[attraction]","[train]","[restaurant]"
+    "[taxi]",
+    "[police]",
+    "[hospital]",
+    "[hotel]",
+    "[attraction]",
+    "[train]",
+    "[restaurant]",
 ]
 
 requestable_slots = {
     "taxi": ["car", "phone"],
     "police": ["postcode", "address", "phone"],
     "hospital": ["address", "phone", "postcode"],
-    "hotel": ["address", "postcode", "internet", "phone", "parking", "type", "pricerange", "stars", "area", "reference"],
-    "attraction": ["price", "type", "address", "postcode", "phone", "area", "reference"],
+    "hotel": [
+        "address",
+        "postcode",
+        "internet",
+        "phone",
+        "parking",
+        "type",
+        "pricerange",
+        "stars",
+        "area",
+        "reference",
+    ],
+    "attraction": [
+        "price",
+        "type",
+        "address",
+        "postcode",
+        "phone",
+        "area",
+        "reference",
+    ],
     "train": ["time", "leave", "price", "arrive", "id", "reference"],
-    "restaurant": ["phone", "postcode", "address", "pricerange", "food", "area", "reference"]
+    "restaurant": [
+        "phone",
+        "postcode",
+        "address",
+        "pricerange",
+        "food",
+        "area",
+        "reference",
+    ],
 }
-all_reqslot = ["car", "address", "postcode", "phone", "internet",  "parking", "type", "pricerange", "food",
-                      "stars", "area", "reference", "time", "leave", "price", "arrive", "id"]
+all_reqslot = [
+    "car",
+    "address",
+    "postcode",
+    "phone",
+    "internet",
+    "parking",
+    "type",
+    "pricerange",
+    "food",
+    "stars",
+    "area",
+    "reference",
+    "time",
+    "leave",
+    "price",
+    "arrive",
+    "id",
+]
 # count: 17
 
 informable_slots = {
     "taxi": ["leave", "destination", "departure", "arrive"],
     "police": [],
     "hospital": ["department"],
-    "hotel": ["type", "parking", "pricerange", "internet", "stay", "day", "people", "area", "stars", "name"],
+    "hotel": [
+        "type",
+        "parking",
+        "pricerange",
+        "internet",
+        "stay",
+        "day",
+        "people",
+        "area",
+        "stars",
+        "name",
+    ],
     "attraction": ["area", "type", "name"],
     "train": ["destination", "day", "arrive", "departure", "people", "leave"],
-    "restaurant": ["food", "pricerange", "area", "name", "time", "day", "people"]
+    "restaurant": ["food", "pricerange", "area", "name", "time", "day", "people"],
 }
-all_infslot = ["type", "parking", "pricerange", "internet", "stay", "day", "people", "area", "stars", "name",
-                     "leave", "destination", "departure", "arrive", "department", "food", "time"]
+all_infslot = [
+    "type",
+    "parking",
+    "pricerange",
+    "internet",
+    "stay",
+    "day",
+    "people",
+    "area",
+    "stars",
+    "name",
+    "leave",
+    "destination",
+    "departure",
+    "arrive",
+    "department",
+    "food",
+    "time",
+]
 # count: 17
 
-all_slots = all_reqslot + all_infslot + ["stay", "day", "people", "name", "destination", "departure", "department"]
+all_slots = (
+    all_reqslot
+    + all_infslot
+    + ["stay", "day", "people", "name", "destination", "departure", "department"]
+)
 all_slots = set(all_slots)
 
 dialog_acts = {
-    'restaurant': ['inform', 'request', 'nooffer', 'recommend', 'select', 'offerbook', 'offerbooked', 'nobook'],
-    'hotel': ['inform', 'request', 'nooffer', 'recommend', 'select', 'offerbook', 'offerbooked', 'nobook'],
-    'attraction': ['inform', 'request', 'nooffer', 'recommend', 'select'],
-    'train': ['inform', 'request', 'nooffer', 'offerbook', 'offerbooked', 'select'],
-    'taxi': ['inform', 'request'],
-    'police': ['inform', 'request'],
-    'hospital': ['inform', 'request'],
+    "restaurant": [
+        "inform",
+        "request",
+        "nooffer",
+        "recommend",
+        "select",
+        "offerbook",
+        "offerbooked",
+        "nobook",
+    ],
+    "hotel": [
+        "inform",
+        "request",
+        "nooffer",
+        "recommend",
+        "select",
+        "offerbook",
+        "offerbooked",
+        "nobook",
+    ],
+    "attraction": ["inform", "request", "nooffer", "recommend", "select"],
+    "train": ["inform", "request", "nooffer", "offerbook", "offerbooked", "select"],
+    "taxi": ["inform", "request"],
+    "police": ["inform", "request"],
+    "hospital": ["inform", "request"],
     # 'booking': ['book', 'inform', 'nobook', 'request'],
-    'general': ['bye', 'greet', 'reqmore', 'welcome'],
+    "general": ["bye", "greet", "reqmore", "welcome"],
 }
 all_acts = []
 for acts in dialog_acts.values():
@@ -79,61 +190,116 @@ slot_renaming = {
         "arrive": "arrive_by",
         "leave": "leave_at_or_after",
     },
-    "[hotel]": {
-        "type": "accommodation_type"
-    }
+    "[hotel]": {"type": "accommodation_type"},
 }
 slot_renaming_reverse = {
-    "[train]": {
-        "arrive_by": "arrive",
-        "leave_at_or_after": "leave"
-    },
-    "[taxi]": {
-        "arrive_by": "arrive",
-        "leave_at_or_after": "leave"
-    },
-    "[hotel]": {
-        "accommodation_type": "type"
-    }
+    "[train]": {"arrive_by": "arrive", "leave_at_or_after": "leave"},
+    "[taxi]": {"arrive_by": "arrive", "leave_at_or_after": "leave"},
+    "[hotel]": {"accommodation_type": "type"},
 }
 
 GENERAL_TYPO = {
-        # type
-        "guesthouse":"guest house", "guesthouses":"guest house", "guest":"guest house", "mutiple sports":"multiple sports",
-        "sports":"multiple sports", "mutliple sports":"multiple sports","swimmingpool":"swimming pool", "concerthall":"concert hall",
-        "concert":"concert hall", "pool":"swimming pool", "night club":"nightclub", "mus":"museum", "ol":"architecture",
-        "colleges":"college", "coll":"college", "architectural":"architecture", "musuem":"museum", "churches":"church",
-        # area
-        "center":"centre", "center of town":"centre", "near city center":"centre", "in the north":"north", "cen":"centre", "east side":"east",
-        "east area":"east", "west part of town":"west", "ce":"centre",  "town center":"centre", "centre of cambridge":"centre",
-        "city center":"centre", "the south":"south", "scentre":"centre", "town centre":"centre", "in town":"centre", "north part of town":"north",
-        "centre of town":"centre", "cb30aq": "none",
-        # price
-        "mode":"moderate", "moderate -ly": "moderate", "mo":"moderate",
-        # day
-        "next friday":"friday", "monda": "monday",
-        # parking
-        "free parking":"free",
-        # internet
-        "free internet":"yes",
-        # star
-        "4 star":"4", "4 stars":"4", "0 star rarting":"none",
-        "one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
-        "1": "one", "2": "two", "3": "three", "4": "four", "5": "five",
-        # others
-        "y":"yes", "any":"dontcare", "n":"no", "does not care":"dontcare", "not men":"none", "not":"none", "not mentioned":"none",
-        '':"none", "not mendtioned":"none", "3 .":"3", "does not":"no", "fun":"none", "art":"none",
-        }
+    # type
+    "guesthouse": "guest house",
+    "guesthouses": "guest house",
+    "guest": "guest house",
+    "mutiple sports": "multiple sports",
+    "sports": "multiple sports",
+    "mutliple sports": "multiple sports",
+    "swimmingpool": "swimming pool",
+    "concerthall": "concert hall",
+    "concert": "concert hall",
+    "pool": "swimming pool",
+    "night club": "nightclub",
+    "mus": "museum",
+    "ol": "architecture",
+    "colleges": "college",
+    "coll": "college",
+    "architectural": "architecture",
+    "musuem": "museum",
+    "churches": "church",
+    # area
+    "center": "centre",
+    "center of town": "centre",
+    "near city center": "centre",
+    "in the north": "north",
+    "cen": "centre",
+    "east side": "east",
+    "east area": "east",
+    "west part of town": "west",
+    "ce": "centre",
+    "town center": "centre",
+    "centre of cambridge": "centre",
+    "city center": "centre",
+    "the south": "south",
+    "scentre": "centre",
+    "town centre": "centre",
+    "in town": "centre",
+    "north part of town": "north",
+    "centre of town": "centre",
+    "cb30aq": "none",
+    # price
+    "mode": "moderate",
+    "moderate -ly": "moderate",
+    "mo": "moderate",
+    # day
+    "next friday": "friday",
+    "monda": "monday",
+    # parking
+    "free parking": "free",
+    # internet
+    "free internet": "yes",
+    # star
+    "4 star": "4",
+    "4 stars": "4",
+    "0 star rarting": "none",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    # others
+    "y": "yes",
+    "any": "dontcare",
+    "n": "no",
+    "does not care": "dontcare",
+    "not men": "none",
+    "not": "none",
+    "not mentioned": "none",
+    "": "none",
+    "not mendtioned": "none",
+    "3 .": "3",
+    "does not": "no",
+    "fun": "none",
+    "art": "none",
+}
+
 
 class Vocab(object):
     def __init__(self, vocab_size=0):
         self.vocab_size = vocab_size
-        self.vocab_size_oov = 0   
-        self._idx2word = {}   
-        self._word2idx = {}  
-        self._freq_dict = {} 
-        for w in ['<pad>', '<go_r>', '<unk>', '<go_b>', '<go_a>','<eos_u>', '<eos_r>',
-                      '<eos_b>', '<eos_a>', '<go_d>','<eos_d>']:
+        self.vocab_size_oov = 0
+        self._idx2word = {}
+        self._word2idx = {}
+        self._freq_dict = {}
+        for w in [
+            "<pad>",
+            "<go_r>",
+            "<unk>",
+            "<go_b>",
+            "<go_a>",
+            "<eos_u>",
+            "<eos_r>",
+            "<eos_b>",
+            "<eos_a>",
+            "<go_d>",
+            "<eos_d>",
+        ]:
             self._absolute_add_word(w)
 
     def _absolute_add_word(self, w):
@@ -157,48 +323,54 @@ class Vocab(object):
 
     def construct(self):
         l = sorted(self._freq_dict.keys(), key=lambda x: -self._freq_dict[x])
-        print('Vocabulary size including oov: %d' % (len(l) + len(self._idx2word)))
+        print("Vocabulary size including oov: %d" % (len(l) + len(self._idx2word)))
         if len(l) + len(self._idx2word) < self.vocab_size:
-            logging.warning('actual label set smaller than that configured: {}/{}'
-                            .format(len(l) + len(self._idx2word), self.vocab_size))
-        for word in all_domains + ['general']:
-            word = '[' + word + ']'
+            logging.warning(
+                "actual label set smaller than that configured: {}/{}".format(
+                    len(l) + len(self._idx2word), self.vocab_size
+                )
+            )
+        for word in all_domains + ["general"]:
+            word = "[" + word + "]"
             self._add_to_vocab(word)
         for word in all_acts:
-            word = '[' + word + ']'
+            word = "[" + word + "]"
             self._add_to_vocab(word)
         for word in all_slots:
             self._add_to_vocab(word)
         for word in l:
-            if word.startswith('[value_') and word.endswith(']'):
+            if word.startswith("[value_") and word.endswith("]"):
                 self._add_to_vocab(word)
         for word in l:
             self._add_to_vocab(word)
         self.vocab_size_oov = len(self._idx2word)
 
     def load_vocab(self, vocab_path):
-        self._freq_dict = json.loads(open(vocab_path+'.freq.json', 'r').read())
-        self._word2idx = json.loads(open(vocab_path+'.word2idx.json', 'r').read())
+        self._freq_dict = json.loads(open(vocab_path + ".freq.json", "r").read())
+        self._word2idx = json.loads(open(vocab_path + ".word2idx.json", "r").read())
         self._idx2word = {}
         for w, idx in self._word2idx.items():
             self._idx2word[idx] = w
         self.vocab_size_oov = len(self._idx2word)
-        print('vocab file loaded from "'+vocab_path+'"')
-        print('Vocabulary size including oov: %d' % (self.vocab_size_oov))
+        print('vocab file loaded from "' + vocab_path + '"')
+        print("Vocabulary size including oov: %d" % (self.vocab_size_oov))
 
     def save_vocab(self, vocab_path):
-        _freq_dict = OrderedDict(sorted(self._freq_dict.items(), key=lambda kv:kv[1], reverse=True))
-        write_dict(vocab_path+'.word2idx.json', self._word2idx)
-        write_dict(vocab_path+'.freq.json', _freq_dict)
-
+        _freq_dict = OrderedDict(
+            sorted(self._freq_dict.items(), key=lambda kv: kv[1], reverse=True)
+        )
+        write_dict(vocab_path + ".word2idx.json", self._word2idx)
+        write_dict(vocab_path + ".freq.json", _freq_dict)
 
     def encode(self, word, include_oov=True):
         if include_oov:
             if self._word2idx.get(word, None) is None:
-                raise ValueError('Unknown word: %s. Vocabulary should include oovs here.'%word)
+                raise ValueError(
+                    "Unknown word: %s. Vocabulary should include oovs here." % word
+                )
             return self._word2idx[word]
         else:
-            word = '<unk>' if word not in self._word2idx else word
+            word = "<unk>" if word not in self._word2idx else word
             return self._word2idx[word]
 
     def sentence_encode(self, word_list):
@@ -210,101 +382,105 @@ class Vocab(object):
     def sentence_oov_map(self, index_list):
         return [self.oov_idx_map(_) for _ in index_list]
 
-
     def decode(self, idx, indicate_oov=False):
         if not self._idx2word.get(idx):
-            raise ValueError('Error idx: %d. Vocabulary should include oovs here.'%idx)
-        if not indicate_oov or idx<self.vocab_size:
+            raise ValueError(
+                "Error idx: %d. Vocabulary should include oovs here." % idx
+            )
+        if not indicate_oov or idx < self.vocab_size:
             return self._idx2word[idx]
         else:
-            return self._idx2word[idx]+'(o)'
+            return self._idx2word[idx] + "(o)"
 
     def sentence_decode(self, index_list, eos=None, indicate_oov=False):
         l = [self.decode(_, indicate_oov) for _ in index_list]
         if not eos or eos not in l:
-            return ' '.join(l)
+            return " ".join(l)
         else:
             idx = l.index(eos)
-            return ' '.join(l[:idx])
+            return " ".join(l[:idx])
 
     def nl_decode(self, l, eos=None):
-        return [self.sentence_decode(_, eos) + '\n' for _ in l]
+        return [self.sentence_decode(_, eos) + "\n" for _ in l]
+
 
 def normalize_domain_slot(schema):
     normalized_schema = []
     for service in schema:
-        if service['service_name'] == 'bus':
-            service['service_name'] = 'taxi'
+        if service["service_name"] == "bus":
+            service["service_name"] = "taxi"
 
-        slots = service['slots']
+        slots = service["slots"]
         normalized_slots = []
 
-        for slot in slots: # split domain-slots to domains and slots
-            domain_slot = slot['name']
-            domain, slot_name = domain_slot.split('-')
-            if domain == 'bus':
-                domain = 'taxi'
-            if slot_name == 'bookstay':
-                slot_name = 'stay'
-            if slot_name == 'bookday':
-                slot_name = 'day'
-            if slot_name == 'bookpeople':
-                slot_name = 'people'
-            if slot_name == 'booktime':
-                slot_name = 'time'
-            if slot_name == 'arriveby':
-                slot_name = 'arrive'
-            if slot_name == 'leaveat':
-                slot_name = 'leave'
+        for slot in slots:  # split domain-slots to domains and slots
+            domain_slot = slot["name"]
+            domain, slot_name = domain_slot.split("-")
+            if domain == "bus":
+                domain = "taxi"
+            if slot_name == "bookstay":
+                slot_name = "stay"
+            if slot_name == "bookday":
+                slot_name = "day"
+            if slot_name == "bookpeople":
+                slot_name = "people"
+            if slot_name == "booktime":
+                slot_name = "time"
+            if slot_name == "arriveby":
+                slot_name = "arrive"
+            if slot_name == "leaveat":
+                slot_name = "leave"
             domain_slot = "-".join([domain, slot_name])
-            slot['name'] = domain_slot
+            slot["name"] = domain_slot
             normalized_slots.append(slot)
 
-        service['slots'] = normalized_slots
+        service["slots"] = normalized_slots
         normalized_schema.append(service)
 
     return normalized_schema
-         
+
+
 def paser_bs_to_list(sent):
     """Convert compacted bs span to triple list
-        Ex:  
+    Ex:
     """
     sent = sent.split()
     belief_state = []
-    domain_idx = [idx for idx,token in enumerate(sent) if token in all_domain]
-    for i,d_idx in enumerate(domain_idx):
-        next_d_idx = len(sent) if i+1 == len(domain_idx) else domain_idx[i+1]
+    domain_idx = [idx for idx, token in enumerate(sent) if token in all_domain]
+    for i, d_idx in enumerate(domain_idx):
+        next_d_idx = len(sent) if i + 1 == len(domain_idx) else domain_idx[i + 1]
         domain = sent[d_idx]
-        sub_span = sent[d_idx+1:next_d_idx]
-        sub_s_idx = [idx for idx,token in enumerate(sub_span) if token in all_slots]
-        for j,s_idx in enumerate(sub_s_idx):
-            next_s_idx = len(sub_span) if j == len(sub_s_idx) - 1 else sub_s_idx[j+1]
+        sub_span = sent[d_idx + 1 : next_d_idx]
+        sub_s_idx = [idx for idx, token in enumerate(sub_span) if token in all_slots]
+        for j, s_idx in enumerate(sub_s_idx):
+            next_s_idx = len(sub_span) if j == len(sub_s_idx) - 1 else sub_s_idx[j + 1]
             slot = sub_span[s_idx]
-            value = ' '.join(sub_span[s_idx+1:next_s_idx])
-            bs = "-".join([domain,slot,value])
+            value = " ".join(sub_span[s_idx + 1 : next_s_idx])
+            bs = "-".join([domain, slot, value])
             belief_state.append(bs)
     return list(set(belief_state))
 
+
 def paser_bs_to_dict(sent, renaming=True):
     """Convert compacted bs span to triple list
-        Ex:  
+    Ex:
     """
     sent = sent.split()
     belief_state = {}
-    domain_idx = [idx for idx,token in enumerate(sent) if token in all_domain]
-    for i,d_idx in enumerate(domain_idx):
-        next_d_idx = len(sent) if i+1 == len(domain_idx) else domain_idx[i+1]
+    domain_idx = [idx for idx, token in enumerate(sent) if token in all_domain]
+    for i, d_idx in enumerate(domain_idx):
+        next_d_idx = len(sent) if i + 1 == len(domain_idx) else domain_idx[i + 1]
         domain = sent[d_idx]
         if domain in belief_state:
             domain_bs = belief_state[domain]
         else:
             domain_bs = {}
-        sub_span = sent[d_idx+1:next_d_idx]
-        sub_s_idx = [idx for idx,token in enumerate(sub_span) if token in all_slots]
-        for j,s_idx in enumerate(sub_s_idx):
-            next_s_idx = len(sub_span) if j+1 == len(sub_s_idx) else sub_s_idx[j+1]
+        sub_span = sent[d_idx + 1 : next_d_idx]
+        sub_s_idx = [idx for idx, token in enumerate(sub_span) if token in all_slots]
+        for j, s_idx in enumerate(sub_s_idx):
+            next_s_idx = len(sub_span) if j + 1 == len(sub_s_idx) else sub_s_idx[j + 1]
             slot = sub_span[s_idx]
-            value = " ".join(sub_span[s_idx+1:next_s_idx])
+            value = " ".join(sub_span[s_idx + 1 : next_s_idx])
             # bs = " ".join([domain,slot,value])
             if renaming:
                 if domain in slot_renaming:
@@ -314,22 +490,32 @@ def paser_bs_to_dict(sent, renaming=True):
         belief_state[domain] = domain_bs
     return belief_state
 
+
 def paser_bs_reform_to_dict(sent):
     """Convert compacted bs span to triple list
-        Ex:  
+    Ex:
     """
-    all_domain = ["[taxi]","[police]","[hospital]","[hotel]","[attraction]","[train]","[restaurant]","[general]"]
+    all_domain = [
+        "[taxi]",
+        "[police]",
+        "[hospital]",
+        "[hotel]",
+        "[attraction]",
+        "[train]",
+        "[restaurant]",
+        "[general]",
+    ]
     sent = sent.split()
     belief_state = {}
-    domain_idx = [idx for idx,token in enumerate(sent) if token in all_domain] 
-    for i,d_idx in enumerate(domain_idx):
-        next_d_idx = len(sent) if i+1 == len(domain_idx) else domain_idx[i+1]
+    domain_idx = [idx for idx, token in enumerate(sent) if token in all_domain]
+    for i, d_idx in enumerate(domain_idx):
+        next_d_idx = len(sent) if i + 1 == len(domain_idx) else domain_idx[i + 1]
         domain = sent[d_idx]
         if domain in belief_state:
             domain_bs = belief_state[domain]
         else:
             domain_bs = {}
-        sub_span = " ".join(sent[d_idx+1:next_d_idx])
+        sub_span = " ".join(sent[d_idx + 1 : next_d_idx])
         for bs in sub_span.split(","):
             if bs and len(bs.split(" is ")) == 2:
                 slot_name, slot_value = bs.split(" is ")
@@ -340,21 +526,23 @@ def paser_bs_reform_to_dict(sent):
         belief_state[domain] = domain_bs
     return belief_state
 
+
 def paser_bs_from_dict_to_list(bs):
-        """
-        Convert compacted bs span to triple list
-        Ex:  
-        """
-        belief_state = []
-        for domain, domain_bs in bs.items():
-            if domain_bs:
-                for slot_name, slot_value in domain_bs.items():
-                    belief_state.append("-".join([domain, slot_name]))
-        return list(set(belief_state))
+    """
+    Convert compacted bs span to triple list
+    Ex:
+    """
+    belief_state = []
+    for domain, domain_bs in bs.items():
+        if domain_bs:
+            for slot_name, slot_value in domain_bs.items():
+                belief_state.append("-".join([domain, slot_name]))
+    return list(set(belief_state))
+
 
 def paser_dict_to_bs(goal, ignore_none_bs=True, reverse_renaming=True):
-    bs_text = []            
-    for domain, bs in goal.items(): 
+    bs_text = []
+    for domain, bs in goal.items():
         if not ignore_none_bs:
             bs_text.append(domain)
         if bs:
@@ -375,8 +563,11 @@ def paser_dict_to_bs(goal, ignore_none_bs=True, reverse_renaming=True):
 
 
 def paser_dict_to_aspn(d_acts):
-    da_text = []            
-    for domain, acts in d_acts.items(): # reverse the dict to align with the original pptod fotmat 
+    da_text = []
+    for (
+        domain,
+        acts,
+    ) in d_acts.items():  # reverse the dict to align with the original pptod fotmat
         if acts:
             da_text.append(domain)
             for act, slots in acts.items():
@@ -386,14 +577,16 @@ def paser_dict_to_aspn(d_acts):
     da_text = " ".join(da_text)
     return da_text
 
-
     bs_text = " ".join(bs_text)
     return bs_text
 
 
 def paser_dict_to_bs_reform(goal, ignore_none_bs=True):
-    bs_reform_text = []            
-    for domain, bs in goal.items(): # reverse the dict to align with the original pptod fotmat 
+    bs_reform_text = []
+    for (
+        domain,
+        bs,
+    ) in goal.items():  # reverse the dict to align with the original pptod fotmat
         if not ignore_none_bs:
             bs_reform_text.append(domain)
         if bs:
@@ -408,9 +601,13 @@ def paser_dict_to_bs_reform(goal, ignore_none_bs=True):
     bs_reform_text = " ".join(bs_reform_text)
     return bs_reform_text
 
+
 def paser_dict_to_bsdx(goal, ignore_none_bs=True):
-    bsdx_text = []            
-    for domain, bs in goal.items(): # reverse the dict to align with the original pptod fotmat 
+    bsdx_text = []
+    for (
+        domain,
+        bs,
+    ) in goal.items():  # reverse the dict to align with the original pptod fotmat
         if not ignore_none_bs:
             bsdx_text.append(domain)
         if bs:
@@ -424,8 +621,11 @@ def paser_dict_to_bsdx(goal, ignore_none_bs=True):
 
 
 def paser_dict_to_bsdx_reform(goal, ignore_none_bs=True):
-    bsdx_reform_text = []            
-    for domain, bs in goal.items(): # reverse the dict to align with the original pptod fotmat 
+    bsdx_reform_text = []
+    for (
+        domain,
+        bs,
+    ) in goal.items():  # reverse the dict to align with the original pptod fotmat
         if not ignore_none_bs:
             bsdx_reform_text.append(domain)
         if bs:
@@ -444,20 +644,22 @@ def paser_dict_to_bsdx_reform(goal, ignore_none_bs=True):
 def paser_aspn_to_dict(sent):
     sent = sent.split()
     dialog_act = {}
-    domain_idx = [idx for idx,token in enumerate(sent) if token in all_domain+["[general]"]]
-    for i,d_idx in enumerate(domain_idx):
-        next_d_idx = len(sent) if i+1 == len(domain_idx) else domain_idx[i+1]
+    domain_idx = [
+        idx for idx, token in enumerate(sent) if token in all_domain + ["[general]"]
+    ]
+    for i, d_idx in enumerate(domain_idx):
+        next_d_idx = len(sent) if i + 1 == len(domain_idx) else domain_idx[i + 1]
         domain = sent[d_idx]
         if domain in dialog_act:
             domain_da = dialog_act[domain]
         else:
             domain_da = {}
-        sub_span = sent[d_idx+1:next_d_idx]
-        sub_a_idx = [idx for idx,token in enumerate(sub_span) if token in all_acts]
-        for j,a_idx in enumerate(sub_a_idx):
-            next_a_idx = len(sub_span) if j+1 == len(sub_a_idx) else sub_a_idx[j+1]
+        sub_span = sent[d_idx + 1 : next_d_idx]
+        sub_a_idx = [idx for idx, token in enumerate(sub_span) if token in all_acts]
+        for j, a_idx in enumerate(sub_a_idx):
+            next_a_idx = len(sub_span) if j + 1 == len(sub_a_idx) else sub_a_idx[j + 1]
             act = sub_span[a_idx]
-            act_slots = sub_span[a_idx+1:next_a_idx]
+            act_slots = sub_span[a_idx + 1 : next_a_idx]
             domain_da[act] = act_slots
         dialog_act[domain] = domain_da
     return dialog_act
@@ -466,20 +668,22 @@ def paser_aspn_to_dict(sent):
 def paser_aspn_to_list(sent):
     sent = sent.split()
     dialog_act_list = []
-    domain_idx = [idx for idx,token in enumerate(sent) if token in all_domain+["[general]"]]
-    for i,d_idx in enumerate(domain_idx):
-        next_d_idx = len(sent) if i+1 == len(domain_idx) else domain_idx[i+1]
+    domain_idx = [
+        idx for idx, token in enumerate(sent) if token in all_domain + ["[general]"]
+    ]
+    for i, d_idx in enumerate(domain_idx):
+        next_d_idx = len(sent) if i + 1 == len(domain_idx) else domain_idx[i + 1]
         domain = sent[d_idx]
         if domain in dialog_act:
             domain_da = dialog_act[domain]
         else:
             domain_da = {}
-        sub_span = sent[d_idx+1:next_d_idx]
-        sub_a_idx = [idx for idx,token in enumerate(sub_span) if token in all_acts]
-        for j,a_idx in enumerate(sub_a_idx):
-            next_a_idx = len(sub_span) if j+1 == len(sub_a_idx) else sub_a_idx[j+1]
+        sub_span = sent[d_idx + 1 : next_d_idx]
+        sub_a_idx = [idx for idx, token in enumerate(sub_span) if token in all_acts]
+        for j, a_idx in enumerate(sub_a_idx):
+            next_a_idx = len(sub_span) if j + 1 == len(sub_a_idx) else sub_a_idx[j + 1]
             act = sub_span[a_idx]
-            act_slots = sub_span[a_idx+1:next_a_idx]
+            act_slots = sub_span[a_idx + 1 : next_a_idx]
             domain_da[act] = act_slots
         for act, act_slots in domain_da.items():
             for act_slot in act_slots:
@@ -505,7 +709,9 @@ def paser_dict_to_list(goal, level):
                 elif isinstance(slot_value, List):
                     if slot_value:
                         for slot_value_ in slot_value:
-                            belief_state.append("-".join([domain, slot_name, slot_value_]))
+                            belief_state.append(
+                                "-".join([domain, slot_name, slot_value_])
+                            )
                     else:
                         belief_state.append("-".join([domain, slot_name]))
         return list(set(belief_state))
@@ -519,7 +725,8 @@ def dict_jaccard_similarity(old_dict, new_dict, levels=[3]):
             return float(len(intersection) / len(unionset))
         else:
             return 0.0
-    similarity = 0.
+
+    similarity = 0.0
     for level in levels:
         old_list = paser_dict_to_list(old_dict, level=level)
         new_list = paser_dict_to_list(new_dict, level=level)
@@ -528,13 +735,13 @@ def dict_jaccard_similarity(old_dict, new_dict, levels=[3]):
     return similarity
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # sent = "[hotel] people 2 stay 3"
     # sent = paser_bs_to_dict(sent)
     # print(sent)
     sent1 = "[hotel] people 2 stay 3"
     sent2 = "[hotel] people 1 stay 3 [restaurant] people 2"
-    dict1, dict2 = paser_bs_to_dict(sent1),  paser_bs_to_dict(sent2)
+    dict1, dict2 = paser_bs_to_dict(sent1), paser_bs_to_dict(sent2)
     print(dict1)
     print(dict2)
     dict_similarity = dict_jaccard_similarity(dict1, dict2, levels=[3])
@@ -545,7 +752,7 @@ if __name__ == '__main__':
     # print(sent)
     sent1 = "[general] [welcome] [restaurant] [request] day people food"
     sent2 = "[general] [greet] [restaurant] [request] food"
-    dict1, dict2 = paser_aspn_to_dict(sent1),  paser_aspn_to_dict(sent2)
+    dict1, dict2 = paser_aspn_to_dict(sent1), paser_aspn_to_dict(sent2)
     print(dict1)
     print(dict2)
 
@@ -558,7 +765,3 @@ if __name__ == '__main__':
 
     list1 = paser_dict_to_list(dict1, level=3)
     print(list1)
-
-
-
-    

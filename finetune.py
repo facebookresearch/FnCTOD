@@ -9,7 +9,12 @@ import transformers
 from datasets import load_dataset
 import wandb
 
-from transformers import TrainerCallback, TrainingArguments, TrainerState, TrainerControl
+from transformers import (
+    TrainerCallback,
+    TrainingArguments,
+    TrainerState,
+    TrainerControl,
+)
 from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
 from transformers import LlamaForCausalLM, LlamaTokenizer
 
@@ -17,12 +22,11 @@ from peft import (
     LoraConfig,
     get_peft_model,
     prepare_model_for_int8_training,
-    set_peft_model_state_dict
+    set_peft_model_state_dict,
 )
 
 from chatbots.conversation import Conversation
-from src.utils import (fc_prefix,
-                       fc_suffix)
+from src.utils import fc_prefix, fc_suffix
 
 
 class SavePeftModelCallback(TrainerCallback):
@@ -33,7 +37,9 @@ class SavePeftModelCallback(TrainerCallback):
         control: TrainerControl,
         **kwargs,
     ):
-        checkpoint_folder = os.path.join(args.output_dir, f"{PREFIX_CHECKPOINT_DIR}-{state.global_step}")
+        checkpoint_folder = os.path.join(
+            args.output_dir, f"{PREFIX_CHECKPOINT_DIR}-{state.global_step}"
+        )
 
         kwargs["model"].save_pretrained(checkpoint_folder)
 
@@ -50,7 +56,9 @@ class LoadBestPeftModelCallback(TrainerCallback):
         control: TrainerControl,
         **kwargs,
     ):
-        print(f"Loading best peft model from {state.best_model_checkpoint} (score: {state.best_metric}).")
+        print(
+            f"Loading best peft model from {state.best_model_checkpoint} (score: {state.best_metric})."
+        )
         best_model_path = os.path.join(state.best_model_checkpoint, "adapter_model.bin")
         adapters_weights = torch.load(best_model_path)
         model = kwargs["model"]
@@ -60,7 +68,7 @@ class LoadBestPeftModelCallback(TrainerCallback):
 
 def train(
     # model/data params
-    base_model: str = "", 
+    base_model: str = "",
     data_path: str = "",
     output_dir: str = "",
     # training hyperparams
@@ -73,7 +81,7 @@ def train(
     eval_steps: int = 200,
     save_steps: int = 1000,
     lr_scheduler: str = "cosine",
-    warmup_steps: int = 100, 
+    warmup_steps: int = 100,
     # lora hyperparams
     lora_r: int = 16,
     lora_alpha: int = 16,
@@ -146,17 +154,21 @@ def train(
         os.environ["WANDB_LOG_MODEL"] = wandb_log_model
 
     model = LlamaForCausalLM.from_pretrained(
-        base_model,
-        load_in_8bit=True,
-        torch_dtype=torch.float16,
-        device_map=device_map)
-    
+        base_model, load_in_8bit=True, torch_dtype=torch.float16, device_map=device_map
+    )
+
     tokenizer = LlamaTokenizer.from_pretrained(base_model)
-    
+
     bos = tokenizer.bos_token_id
     eos = tokenizer.eos_token_id
     pad = tokenizer.pad_token_id
-    print("pre-trained model's BOS EOS and PAD token id:",bos,eos,pad," => It should be 1 2 None")
+    print(
+        "pre-trained model's BOS EOS and PAD token id:",
+        bos,
+        eos,
+        pad,
+        " => It should be 1 2 None",
+    )
 
     tokenizer.pad_token_id = 0  # unk. we want this to be different from the eos token
     tokenizer.padding_side = "right"
@@ -180,10 +192,8 @@ def train(
         result["labels"] = result["input_ids"].copy()
 
         return result
-    
-    
+
     def generate_and_tokenize_conversation(data_point):
-        
         # data in the conversation fashion
         system_prompt = data_point["system"]
         conversation = data_point["conversation"]
@@ -193,26 +203,24 @@ def train(
         target_len = 0
 
         # system message part
-        tokenized_system_prompt = tokenize(
-            system_prompt, add_eos_token=add_eos_token)
+        tokenized_system_prompt = tokenize(system_prompt, add_eos_token=add_eos_token)
         system_prompt_len = len(tokenized_system_prompt["input_ids"])
         if add_eos_token:
             system_prompt_len -= 1
         tokenized_ids += tokenized_system_prompt["input_ids"]
-        labels += [-100]*system_prompt_len
+        labels += [-100] * system_prompt_len
 
         # conversation
         for message in conversation:
             ###### user turn ######
             if message["role"] == "user":
                 user_input = message["content"]
-                tokenized_user_input = tokenize(
-                    user_input, add_eos_token=add_eos_token)
+                tokenized_user_input = tokenize(user_input, add_eos_token=add_eos_token)
                 user_input_len = len(tokenized_user_input["input_ids"])
                 if add_eos_token:
                     user_input_len -= 1
                 tokenized_ids += tokenized_user_input["input_ids"]
-                labels += [-100]*user_input_len
+                labels += [-100] * user_input_len
 
             ###### assistant turn ######
             elif message["role"] == "assistant":
@@ -225,22 +233,22 @@ def train(
                 else:
                     function_call = ""
                     response = assistant_output
-                    
+
                 ### part 1: function call ###
                 if function_call:
                     tokenized_function_call = tokenize(
-                        function_call, add_eos_token=add_eos_token)
+                        function_call, add_eos_token=add_eos_token
+                    )
                     function_call_output_len = len(tokenized_function_call["input_ids"])
                     if add_eos_token:
-                        function_call_output_len -= 1    
+                        function_call_output_len -= 1
                     tokenized_ids += tokenized_function_call["input_ids"]
                     labels += tokenized_function_call["input_ids"]
                     target_len += function_call_output_len
 
                 ### part 2: response ###
                 if response:
-                    tokenized_response = tokenize(
-                        response, add_eos_token=add_eos_token)
+                    tokenized_response = tokenize(response, add_eos_token=add_eos_token)
                     response_output_len = len(tokenized_response["input_ids"])
                     if add_eos_token:
                         response_output_len -= 1
@@ -249,11 +257,13 @@ def train(
                         labels += tokenized_response["input_ids"]
                         target_len += response_output_len
                     else:
-                        labels += [-100]*response_output_len
-        
+                        labels += [-100] * response_output_len
+
         assert len(tokenized_ids) == len(labels)
-        return {"input_ids": torch.LongTensor(tokenized_ids), "labels": torch.LongTensor(labels)}
-        
+        return {
+            "input_ids": torch.LongTensor(tokenized_ids),
+            "labels": torch.LongTensor(labels),
+        }
 
     model = prepare_model_for_int8_training(model)
 
@@ -263,7 +273,8 @@ def train(
         target_modules=lora_target_modules,
         lora_dropout=lora_dropout,
         bias="none",
-        task_type="CAUSAL_LM")
+        task_type="CAUSAL_LM",
+    )
 
     model = get_peft_model(model, config)
 
@@ -281,9 +292,7 @@ def train(
             checkpoint_name = os.path.join(
                 resume_from_checkpoint, "adapter_model.bin"
             )  # only LoRA model - LoRA config above has to fit
-            resume_from_checkpoint = (
-                False  # So the trainer won't try loading its state
-            )
+            resume_from_checkpoint = False  # So the trainer won't try loading its state
         # The two files above have a different name depending on how they were saved, but are actually the same.
         if os.path.exists(checkpoint_name):
             print(f"Restarting from {checkpoint_name}")
@@ -301,9 +310,7 @@ def train(
         train_data = (
             train_val["train"].shuffle().map(generate_and_tokenize_conversation)
         )
-        val_data = (
-            train_val["test"].shuffle().map(generate_and_tokenize_conversation)
-        )
+        val_data = train_val["test"].shuffle().map(generate_and_tokenize_conversation)
     else:
         train_data = data["train"].shuffle().map(generate_and_tokenize_conversation)
         val_data = None
@@ -361,5 +368,5 @@ def train(
 
 
 if __name__ == "__main__":
-    torch.cuda.empty_cache() 
+    torch.cuda.empty_cache()
     fire.Fire(train)
