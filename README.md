@@ -15,8 +15,9 @@ We introduce a novel approach FnCTOD, to address zero-shot DST with LLMs. Our me
 The detailed instruction for preparing the benchmark dataset MultiWOZ and pre-training corpora (optional) are provided in the `./data` folder.
 
 ## Environment Setup
-1. Conda Environment Setup: `pip install -r requirements.txt`
-2. Environment Variable Configuration: Set the following environment variables for local model inference in each evaluation script:
+1. Requires Python 3.8 &ndash; 3.11
+2. Conda Environment Setup: `pip install -r requirements.txt`
+3. Environment Variable Configuration: Set the following environment variables for local model inference in each evaluation script:
 ```
 export TRANSFORMERS_CACHE='/HOME_PATH/.cache/huggingface/transformers'
 export HF_HOME='/HOME_PATH/.cache/huggingface'
