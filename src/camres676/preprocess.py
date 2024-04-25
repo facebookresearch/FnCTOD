@@ -1,3 +1,12 @@
+#!/bin/python3
+
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
 def update_belief_state(usr_dict, prev_bs_dict, prev_bs_name_list):
     res_bs_dict, res_bs_name_list = prev_bs_dict, prev_bs_name_list
     curr_bs_state = usr_dict["usr"]["slu"]

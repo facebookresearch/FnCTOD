@@ -1,3 +1,12 @@
+#!/bin/python3
+
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
 def schema2function(service, rename_mapping={}):
     # convert the schema to the function call format in GPT-3.5/4.
     # https://openai.com/blog/function-calling-and-other-api-updates

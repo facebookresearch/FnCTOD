@@ -1,3 +1,12 @@
+#!/bin/python3
+
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
 import json
 from sklearn.metrics import f1_score, accuracy_score
 import sys

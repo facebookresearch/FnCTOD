@@ -1,3 +1,12 @@
+#!/bin/python3
+
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
 llm_configs = {
     "gpt-4": {"model_name": "gpt-4-1106-preview", "port": 8000},
     "gpt-3.5": {"model_name": "gpt-3.5-turbo-1106", "port": 8001},
