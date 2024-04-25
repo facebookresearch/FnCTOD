@@ -1,3 +1,10 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
 python -m spacy download en_core_web_sm
 cd ./ubar-preprocessing/data
 wget https://github.com/budzianowski/multiwoz/blob/master/data/MultiWOZ_2.1.zip?raw=true -O MultiWOZ_2.1.zip
