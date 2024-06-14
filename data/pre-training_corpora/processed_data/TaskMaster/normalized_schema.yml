@@ -1,0 +1,1054 @@
+- service_name: uber_lyft
+  description: arrange uber or lyft taxi rides for customers
+  slots:
+  - name: uber_lyft-departure
+    description: from location
+    possible_values:
+    - Atlanta Airport
+    - Atlanta airport northgate terminal parkway delta passenger
+    - Showcase Cinemas in Northern Worcester
+    - 2220 West Main
+    - near downtown Belleville, IL.
+    - Garden State Plaza in Paramus, NJ
+    - Arch Street Tavern
+    - Tysons Corner Mall
+    - Folsom
+    - Folsom Jiffy Lube
+    - Red Hat Ampitheatre
+    - 448 comet dr. toney AL
+    - Uncle Leo's Pizza in St. Louis
+    - San Francisco International Airport Station, San Francisco, CA, USA
+    - the airport at the pickup area
+    - Uncle bobs sports bar
+    - 500 Woodward Avenue in Detroit
+    - 1254 Mission Street
+    - Amalie Arena
+    - 5436 Moorhead Ave
+    is_categorical: false
+  - name: uber_lyft-destination
+    description: to location
+    possible_values:
+    - brandy more pints info
+    - Holiday Inn Airport location North
+    - 1380 Virginia Ave, Atlanta, GA 30344
+    - Deadhorse
+    - St. Clair Mall in Fairview Heights, IL
+    - St. Clair Mall
+    - Atlantic City Bus terminal
+    - 23 Taylor Street in Hartford, Connecticut
+    - Off The Record in D.C.
+    - Harkins cinema on mayo street scottsdale
+    - Kohl's
+    - The Sheraton near RDU
+    - U.S. Space and Rocket center
+    - Paragon Theatre
+    - San Francisco, CA, USA
+    - San Francisco Marriott Marquis, Mission Street, San Francisco, CA, USA.
+    - 1700 Woodward Avenue
+    - the airport in Oakland
+    - The Cheesecake Factory in Tampa
+    - International Plaza Mall
+    is_categorical: false
+  - name: uber_lyft-type
+    description: ride type
+    possible_values:
+    - pool ride
+    - pool
+    - Lyft regular
+    - Uber
+    - Lyft personal ride
+    - Lyft XL
+    - UberX
+    - UberXL
+    - uberXL
+    - Uber Black
+    - Uber Select
+    - Lyft personal rides
+    - Uber pool
+    - XL
+    - Uber X.
+    - Uber Pool
+    - regular
+    - regular Lyft
+    - Shared Lyft
+    - regular Uber
+    is_categorical: false
+  - name: uber_lyft-people
+    description: number of people
+    possible_values:
+    - five
+    - friend will be going with me.
+    - Two
+    - 3 people
+    - just for me
+    - six
+    - two
+    - two people
+    - Five.
+    - 4 people
+    - me
+    - me alone.
+    - four
+    - '6'
+    - two others with me
+    - three
+    - just me
+    - My friend is coming along with me
+    - i am with 7 people
+    - one
+    is_categorical: false
+  - name: uber_lyft-price
+    description: estimate price
+    possible_values:
+    - $18
+    - '150.36'
+    - $30-35
+    - $7.06
+    - nine dollars
+    - Pool
+    - $30
+    - cheapest
+    - $26.48
+    - $15
+    - $10.03
+    - $8.69
+    - that is fine
+    - $23.31
+    - $6.22.
+    - 9:00 p.m
+    - understood. thankyou
+    - $18.
+    - $75
+    - That's fine
+    is_categorical: false
+  - name: uber_lyft-duration
+    description: estimate duration
+    possible_values:
+    - 12 minutes
+    - 30 minutes
+    - 20 minutes
+    - 15 minutes away
+    - hour
+    - one hour
+    - 18 minutes
+    - 8 mins
+    - ds like a
+    - four hours
+    - 51 min
+    - 25 minutes
+    - 16 minutes
+    - '10'
+    - 13.5$
+    - How long w
+    - 30 minute drive
+    - 4 minutes
+    - 1 hour
+    - at least 30 minutes but before 60 minutes.
+    is_categorical: false
+  - name: uber_lyft-leave_time
+    description: pickup time
+    possible_values:
+    - Tonight at 9:00
+    - 8:45 pm
+    - 9:00 pm
+    - 9:00 p.m
+    - 2:00p.m
+    - '6:45.'
+    - 10:00 pm
+    - 12 noon
+    - 33 minutes
+    - 10AM
+    - '9:00'
+    - 9:00 p.m.
+    - 3pm
+    - 5 minutes
+    - '6:00'
+    - 8pm
+    - 7:45pm
+    - '2:00'
+    - 830 pm.
+    - 10:00 p.m
+    is_categorical: false
+  - name: uber_lyft-arrive_time
+    description: dropoff time
+    possible_values:
+    - 8pm
+    - 7:45 PM
+    - Whataburger on Haskell Avenue
+    - Hop Sing Laundromat
+    - '5:30'
+    - '4:00'
+    - 8:30pm
+    - 9:00 p.m
+    - 10pm
+    - Glendale Galleria Mall
+    - 5 pm
+    - one
+    - 9:30 pm
+    - '6:45'
+    - 3 P.M
+    - Hyatt Hotel
+    - Between 5 and 6
+    - 5389 West Street, New York, New York
+    - 7pm
+    - '7:30'
+    is_categorical: false
+  actions: []
+- service_name: movie_ticket
+  description: movie ticket booking
+  slots:
+  - name: movie_ticket-movie_name
+    description: movie name
+    possible_values:
+    - Aquaman
+    - new Fighting
+    - the Green Book
+    - Dumbo
+    - Glass
+    - Alita
+    - How to Train Your Dragon 3
+    - star wars
+    - Mission Impossibles
+    - Incredibles
+    - Cold Pursuit.
+    - tickets to see Mary
+    - AMC theater at Barrett Commons
+    - CAPTAIN MARVEL
+    - Escape Room
+    - 'Alita: Battle Angel'
+    - Spider-Man.
+    - Bohemian Rhapsody
+    - A Star is Born
+    - Airplane
+    is_categorical: false
+  - name: movie_ticket-theater_name
+    description: theater name
+    possible_values:
+    - the Riggio Manna Twin
+    - Paradiso in Memphis
+    - AMC
+    - IMAX
+    - Harkins Theatres Northfield 18.
+    - Cherry Blossom Theater
+    - REGAL THEATER
+    - COUNTRYSIDE COBB 12 THEATER
+    - Shea in Dallas, Texas
+    - Highland Theaters in L.A
+    - 'Regal L.A. LIVE: A Barco Innovation Center'
+    - the AMC Madison 6
+    - Penn Cinema Huntington Valley
+    - Regal
+    - AMC Garden State
+    - AMC eastchase
+    - Simon AMC Classic.
+    - Regal Cinemas
+    - Williamsburg Cinema
+    - Nighthawk
+    is_categorical: false
+  - name: movie_ticket-people
+    description: number of tickets
+    possible_values:
+    - Three
+    - one
+    - two
+    - 2 tickets
+    - couple
+    - '2'
+    - Two tickets
+    - four
+    - three
+    - '3'
+    - three tickets
+    - '5'
+    - 3 adults and 2 kids
+    - two tickets
+    - Two adult tickets
+    - two students tickets
+    - 6 tickets
+    - one ticket
+    - 4 tickets
+    - two children
+    is_categorical: false
+  - name: movie_ticket-start_time
+    description: start time
+    possible_values:
+    - 8:00 p.m
+    - '7:00'
+    - 9 o'clock
+    - '8:30'
+    - 5:00 p.m
+    - '10:05'
+    - '7:10'
+    - 6:40 p.m
+    - 8:30 pm
+    - 1pm
+    - 2pm
+    - 7PM
+    - '5:15'
+    - 7:30 PM
+    - 7:10 PM
+    - '3:18'
+    - '10:20'
+    - '7:55'
+    - '5:05'
+    - 6:00 p.m
+    is_categorical: false
+  - name: movie_ticket-theater_location
+    description: theater location
+    possible_values:
+    - Detroit, Michigan
+    - New York City area
+    - Shallotte, North Carolina
+    - Toledo, OH
+    - Southgate, Michigan
+    - Memphis
+    - New York City
+    - Clifton
+    - Clifton, New Jersey
+    - Denver Colorado
+    - Traverse City
+    - Kennessaw, Georgia
+    - Kennessaw
+    - LARGO MALL AT
+    - Orlando
+    - Sacramento
+    - Detroit
+    - Philadelphia
+    - Conway Arkansas
+    - Waltham
+    is_categorical: false
+  - name: movie_ticket-price
+    description: ticket price
+    possible_values:
+    - 15 bucks
+    - 35 dollars
+    - $13.50
+    - Okay
+    - $1
+    - $30
+    - $13
+    - Great
+    - $9
+    - Two $10 tickets
+    - couple
+    - $ 28.38
+    - '24.92'
+    - $15.00
+    - $8.00
+    - 12 bucks?
+    - $7.59
+    - two
+    - ten bucks
+    - under 30 dollars
+    is_categorical: false
+  - name: movie_ticket-screening
+    description: screening type
+    possible_values:
+    - IMAX screen
+    - 3D
+    - DBOX
+    - REGULAR
+    - 3d
+    - standard
+    - IMAX
+    - Imax
+    - XD
+    - regular
+    - non-3D
+    - digital
+    - regular showing
+    - Imax screen
+    - imax
+    - 3-D
+    - normal
+    - 6 pm
+    - 3D XD.
+    - No 3D
+    is_categorical: false
+  - name: movie_ticket-end_time
+    description: end time
+    possible_values:
+    - around 10
+    - be over by nine
+    - nine thirty
+    - something in the evening
+    is_categorical: false
+  - name: movie_ticket-duration
+    description: duration time
+    possible_values:
+    - 1 hour 40 minutes
+    - 2 hours
+    - How long is the m
+    - you.
+    - two and a half hours
+    - is the movie?
+    - an hour and 39 minutes
+    - 1 hour 48 minutes
+    is_categorical: false
+  actions: []
+- service_name: restaurant_reservation
+  description: restaurant reservation
+  slots:
+  - name: restaurant_reservation-name
+    description: restaurant name
+    possible_values:
+    - Fisherman's Wharf
+    - Dickey's
+    - Lucilles Smokehouse.
+    - Go Green
+    - Chika Palace
+    - Tea Cup House
+    - Talulas Table of philadelphia
+    - Prime 112
+    - California restaurant
+    - Sbarro's
+    - Trattorina
+    - Big Buck Brewery
+    - Alpine Tavern
+    - Om Indian Cuisine
+    - Yank Sing
+    - Fang
+    - Osso
+    - Sofia's
+    - La Mezza
+    - Chicago Fire
+    is_categorical: false
+  - name: restaurant_reservation-reservation_name
+    description: reservation name
+    possible_values:
+    - smith
+    - Mitchell
+    - 8pm
+    - Nick Lee
+    - Ruth's Chis
+    - John
+    - Uchi
+    - Smithers
+    - Phil
+    - Mr. Foster
+    - Mr. Fost
+    - John Smith
+    - The Old Spaghetti Factory
+    - Buddakan
+    - Bob Smith
+    - charleston
+    - Outside Inn
+    - Roosevelt Blvd
+    - Alex
+    - Duo
+    is_categorical: false
+  - name: restaurant_reservation-people
+    description: number of guests
+    possible_values:
+    - '10'
+    - 13 people
+    - One
+    - '2'
+    - '4'
+    - four
+    - six
+    - '3'
+    - 8 people
+    - three
+    - me and my family
+    - 6 people
+    - '6'
+    - Two
+    - '5'
+    - five
+    - two
+    - two people
+    - Eight people
+    - my family
+    is_categorical: false
+  - name: restaurant_reservation-time
+    description: reservation time
+    possible_values:
+    - '8:00'
+    - 3:30pm
+    - 12pm
+    - 8pm
+    - 7pm
+    - thursday the seventh at 5pm.
+    - '5:30.'
+    - '7:30'
+    - next Friday
+    - Friday night at 6pm
+    - 9pm
+    - 6PM
+    - 7:00 p.m
+    - Saturday, at 4:00 PM
+    - 7:00 PM
+    - 7 pm
+    - 7:30 pm
+    - 8:00 p.m
+    - 9:00 p.m
+    - 7:45 p.m
+    is_categorical: false
+  - name: restaurant_reservation-seating
+    description: seating type
+    possible_values:
+    - outside table.
+    - booth
+    - full bar
+    - bar
+    - Outdoor table
+    - bar area
+    - booth inside
+    - table
+    - Smoking
+    - outside seating.
+    - outside seating
+    - 'No'
+    - away from the door
+    - outdoor dining
+    - table on the Patio overlooking the river view
+    - outdoor seating
+    - on the patio
+    - indoor seating
+    - booths
+    - small table
+    is_categorical: false
+  - name: restaurant_reservation-location
+    description: restaurant location
+    possible_values:
+    - San Francisco, California
+    - Birmingham
+    - Sacramento, CA
+    - 19th Street
+    - Sacramento near mid-town at L Street and 19th
+    - Las Vegas
+    - Ceaser's Palace
+    - philadelphia
+    - Sacramento, California
+    - Arden Fair Mall
+    - San Francisco
+    - Gaylord, Michigan
+    - San Francisco, California.
+    - Rochester, NY
+    - Englewood
+    - Folsom
+    - Oakland.
+    - Madison area
+    - Somerville, MA
+    - Westboro
+    is_categorical: false
+  actions: []
+- service_name: coffee_ordering
+  description: coffee ordering
+  slots:
+  - name: coffee_ordering-store_location
+    description: store location
+    possible_values:
+    - Starbucks, Gainesville Archer
+    - 26th and Wilshire
+    - McVay Dr. in Mobile
+    - Starbucks at 4600 High Pointe Boulevard
+    - Northgate Way in Seattle.
+    - Rockefeller Plaza in New York City
+    - Safeway at 700 US-101, Florence, OR 97439
+    - on 75th
+    - 1518 Pat Booker Road
+    - the Starbucks on University Avenue in Madison, Wisconsin
+    - University City Boulevard
+    - East Franklin Street in Chapel Hill
+    - Lakeline
+    - Appleton, WI
+    - the East West Highway Peet's in Silver Spring, Maryland.
+    - Starbucks at the Concourse Hotel in Madison, Wisconsin
+    - Plaza Mall
+    - N Monroe
+    - 2301 Justin Road in Flower Mound, Texas
+    - Starbucks on Pike Street in Seattle
+    is_categorical: false
+  - name: coffee_ordering-drink_name
+    description: drink name
+    possible_values:
+    - Espresso
+    - decaf latte
+    - White Chocolate Mocha
+    - latte
+    - iced Americano
+    - iced americano
+    - iced vanilla latte
+    - hot coffee
+    - iced chai
+    - chai
+    - caramel macchiato
+    - double chocolate chip Frappuccino
+    - cafe mocha
+    - Blonde Caffe Americano
+    - iced cinnamon dolce latte
+    - mocha
+    - Americano
+    - iced Havana cappuccino
+    - cafe latte
+    - Vanilla Latte
+    is_categorical: false
+  - name: coffee_ordering-drink_size
+    description: drink size
+    possible_values:
+    - venti
+    - grande
+    - tall
+    - Tall.
+    - large
+    - Paul
+    - Bento
+    - small
+    - medium
+    - Venti!
+    - medium size
+    - large.
+    - small 12 ounce
+    - largest
+    - largest size
+    - 16 ounce
+    - Short
+    - vente
+    - triple
+    - authentic
+    is_categorical: false
+  - name: coffee_ordering-number_of_drink
+    description: number of drink
+    possible_values:
+    - venti double chocolate chip Frappuccino
+    - 'Yes'
+    - "caramel brul\xE9e latte"
+    - One
+    - one
+    - Americano
+    - three
+    - one coffee
+    - two pumps
+    - grande coffees
+    - two
+    - extra mocha
+    - the mocha
+    - both
+    - '4'
+    - '2'
+    - single
+    - cafe mocha
+    - four
+    - "Caff\xE8 Mocha"
+    is_categorical: false
+  - name: coffee_ordering-milk_type
+    description: milk type
+    possible_values:
+    - 2%.
+    - soy milk
+    - whole milk
+    - skin
+    - non fat
+    - almond milk
+    - coconut milk
+    - 2% milk
+    - Nonfat
+    - regular milk
+    - mexican mil
+    - nonfat milk
+    - almond
+    - Normal
+    - Soy
+    - skim milk.
+    - non fat milk
+    - two percent milk
+    - Whole
+    - 2 percent
+    is_categorical: false
+  - name: coffee_ordering-preference
+    description: preference
+    possible_values:
+    - heart
+    - extra whip
+    - pump of sugar free hazelnut
+    - caramel drizzle
+    - whip cream
+    - light on the ice
+    - hazelnut
+    - light ice
+    - extra cinnamon
+    - whip
+    - 'No'
+    - iced
+    - without whip cream
+    - extra shot of espresso
+    - pump of the mocha sauce
+    - no whip
+    - whipped cream
+    - hot
+    - extra pump of caramel
+    - sprinkles
+    is_categorical: false
+  actions: []
+- service_name: pizza_ordering
+  description: pizza ordering
+  slots:
+  - name: pizza_ordering-store_name
+    description: store name
+    possible_values:
+    - Jim's Pizzeria
+    - dominos
+    - Pequods
+    - giovannies pizza
+    - Domino's
+    - Il Canale
+    - blocks away
+    - Bella Luna
+    - pizza hut
+    - papa johns
+    - Bella Luna Pizzeria
+    - Papa Jhons
+    - Pizza Hut.
+    - marks
+    - Barry's Pizza
+    - Bosses Pizza
+    - gino's deli
+    - Donato's
+    - Bebe Pizza
+    - New York Pizzeria
+    is_categorical: false
+  - name: pizza_ordering-pizza_name
+    description: pizza name
+    possible_values:
+    - bacon and cheddar
+    - combination
+    - pan
+    - pan pizza
+    - meat lovers pizza
+    - BBQ chicken pizza
+    - Meat Lovers
+    - Napoli
+    - supreme pizza
+    - stuffed crust pizza
+    - Veggie Lovers
+    - neapolitan
+    - BBQ Lover's pizza
+    - Chicken Pizza
+    - Cheeseburger Pizza
+    - pepperoni pizzas
+    - Farmville personal pizza
+    - farmville pizza
+    - cheese pizzas
+    - vegan lovers pizza
+    is_categorical: false
+  - name: pizza_ordering-pizza_size
+    description: pizza size
+    possible_values:
+    - large
+    - family size
+    - medium
+    - extra large
+    - medium pizzas with
+    - small sized
+    - 18 inch
+    - small
+    - big
+    - thin crust
+    - large pizzas
+    - large pizza
+    - largest
+    - ay.
+    - pan pizza
+    - mall
+    - 16 inch
+    - two topping
+    - larger
+    - Family-size
+    is_categorical: false
+  - name: pizza_ordering-topping
+    description: topping type
+    possible_values:
+    - ham
+    - pineapple
+    - spinach
+    - olives
+    - onions
+    - cheese
+    - parmesan
+    - mushroom
+    - jalapeno
+    - jalapenos
+    - spicy chicken
+    - regular chiken
+    - chilli
+    - sausage
+    - extra sauce.
+    - chicken
+    - green peppers
+    - portobello mushrooms
+    - green and black olives
+    - double black olives
+    is_categorical: false
+  - name: pizza_ordering-crust
+    description: crust type
+    possible_values:
+    - thin crust
+    - stuffed crust
+    - thick crusts
+    - traditional crust
+    - Pan
+    - thick crust
+    - onions
+    - thin crust.
+    - chicken
+    - gluten free
+    - gluten-free crust
+    - glutten free crust
+    - Deep dish
+    - Hand tossed.
+    - thin
+    - gluten free crust
+    - Then crust
+    - Pan crust pleas
+    - stuffed garlic
+    - hand tossed
+    is_categorical: false
+  - name: pizza_ordering-preference
+    description: preference
+    possible_values:
+    - leave off the ground beef
+    - extra tomato sauce.
+    - more cheese
+    - hot sauce
+    - extra spicy
+    - cheese
+    - onions
+    - without the sausage
+    - extra sauce
+    - ranch
+    - blue cheese
+    - extra cheese
+    - tomato sauce
+    - red sauce
+    - chees
+    - No extra cheese
+    - extra cheese.
+    - white sauce
+    - hut favorite
+    - garlic
+    is_categorical: false
+  - name: pizza_ordering-store_location
+    description: store location
+    possible_values:
+    - Ala Moana Shopping center
+    - soscol ave
+    - Chicago
+    - 2 blocks away
+    - Horizon ridge in Henderson, nv
+    - Pizza Hut.
+    - Fort Worth 76108
+    - one down the street
+    - Main St.
+    - FM78
+    - studio city
+    - east location
+    - 3rd street location
+    - Elm Street
+    - Winter Springs
+    - 876 Geary Street in San Francisco, California
+    - Clarion, PA
+    - NYC
+    - Elm Street in Atlanta, GA
+    - 23rd Street in West Essex
+    is_categorical: false
+  actions: []
+- service_name: auto_repair
+  description: vehicle repair service appointment
+  slots:
+  - name: auto_repair-store_name
+    description: store name
+    possible_values:
+    - Intelligent Auto Solutions
+    - Intelligent Auto Solutions.
+    - Intelligent Auto Imports
+    - Intelligent Auto Imports.
+    - intelligent auto imports
+    - Intelligence auto Imports
+    - Belle Tire
+    - intelligent Auto solutions.
+    - intelligent Auto solutions
+    - Intelligent Auto Import
+    - Intelligent Auto Solution
+    - Intelligent Auto Solutions?
+    - Intelligent Auto Soluitions
+    - Intelligent auto imports.
+    - auto mechanic
+    - intelligent Auto Solutions
+    - Intelligent Auto solutions
+    - Master's car repair
+    - Intelligent auto parts
+    - intelligent auto solutions
+    is_categorical: false
+  - name: auto_repair-reservation_name
+    description: customer name
+    possible_values:
+    - Chelsea Kinsey
+    - Robert Starch
+    - Jason Marcus
+    - Bob Johnson
+    - j o h n
+    - John Doe
+    - James
+    - j a m e s.
+    - Jack Smith
+    - Steve Colbert
+    - c o l b e r t.
+    - Arnoldo Arnolda Careth.
+    - a r n o l d a.
+    - Harris.
+    - h a r r i s.
+    - Krista Sheller
+    - Tori Parker. t o r i p a r k e r.
+    - Yar Mahm
+    - John Anderson
+    - a n d e r s o n.
+    is_categorical: false
+  - name: auto_repair-appointment_date
+    description: appointment date
+    possible_values:
+    - tomorrow
+    - sooner
+    - Next Friday
+    - 22nd.
+    - Friday morning
+    - today
+    - next Monday
+    - Friday
+    - Thursday
+    - tonight
+    - next Friday
+    - February 1st.
+    - tomorrow morning
+    - As soon as possible
+    - next day
+    - next Friday.
+    - February the 1st.
+    - afternoon
+    - Wednesday
+    - January 24th
+    is_categorical: false
+  - name: auto_repair-appointment_time
+    description: appointment time
+    possible_values:
+    - afternoon
+    - 12:00 noon
+    - morning
+    - 3:00 p.m
+    - 8:00 a.m
+    - 8:00 p.m
+    - As soon as
+    - '12'
+    - '2'
+    - '3:00'
+    - as soon as possibl
+    - next 3 hours
+    - As soon as possible.
+    - 3pm
+    - this afternoon
+    - '4:30'
+    - '4'
+    - 1pm
+    - 8:30 a.m.
+    - 9:00am
+    is_categorical: false
+  - name: auto_repair-appointment_reason
+    description: appointment reason
+    possible_values:
+    - gas gauge
+    - strange whirring sound
+    - check engine light is on
+    - bunch of oil dripping
+    - engine light has been on
+    - realignment
+    - pulls into the left
+    - leaking oil
+    - car's leaking oil
+    - tune-up.
+    - steering wheel is suddenly shaking
+    - tuneup
+    - Well the check engine light just came on and there is a tapping noise from the
+      engine.
+    - Yeah, it just came on when I was pulling away from a light.
+    - It seems to be kind of pulling to the left
+    - several lights that are going in and out
+    - it sputters when I accelerate
+    - there is a noise when you turn, keeps stalling at long traffic lights, it pulls
+      to the left, leaking oil, several lights are out
+    - deflated tires
+    - I'm in a long traffic light the car ends up stalling
+    is_categorical: false
+  - name: auto_repair-vehicle_name
+    description: vehicle name
+    possible_values:
+    - Dodge Neon
+    - Honda
+    - CR-V.
+    - Lexus RX 350
+    - Ford Mustang
+    - RDA8.
+    - BMW 3 Series
+    - Kia Soul
+    - Honda Pilot
+    - Nissan Rogue
+    - Dodge Dart
+    - ford focus
+    - Audi Q8
+    - Chevrolet Aveo
+    - Mercedes-Benz C-Class
+    - Dodge Avenger
+    - Range Rover
+    - Acura RDX
+    - ford F150
+    - Subaru Outback
+    is_categorical: false
+  - name: auto_repair-vehicle_year
+    description: vehicle year
+    possible_values:
+    - '2017'
+    - '2015'
+    - '2016'
+    - '2018'
+    - '2009'
+    - '2013'
+    - '2011'
+    - '2014'
+    - '2008'
+    - '1996'
+    - '2019'
+    - '2005'
+    - '2010'
+    - '1987'
+    - '2012'
+    - Acura NSX
+    - '2002'
+    - '1995'
+    - '2004.'
+    - '1990'
+    is_categorical: false
+  - name: auto_repair-store_location
+    description: store location
+    possible_values:
+    - Mock Street.
+    - Port Huron, Michigan
+    - 500 Hillsboro Avenue
+    - Columbus, Ohio
+    - Intelligent auto imports
+    - 322 Lincoln
+    - Grand Avenue
+    - 455 Lincoln Road
+    - GMC dealership
+    - Intelligent Auto Solutions
+    - Markham
+    - Boston Road
+    - 500 Garcia Avenue
+    - Atlanta GA
+    - Rockville, MD.
+    - downtown
+    - 700 Green Valley Road
+    - Detroit, Michigan
+    - 25 Main Street in Boston
+    - Lincoln Avenue
+    is_categorical: false
+  actions: []

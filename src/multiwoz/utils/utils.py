@@ -202,8 +202,8 @@ slot_renaming = {
     "[hotel]": {"type": "accommodation_type"},
 }
 slot_renaming_reverse = {
-    "[train]": {"arrive_by": "arrive", "leave_at_or_after": "leave"},
-    "[taxi]": {"arrive_by": "arrive", "leave_at_or_after": "leave"},
+    "[train]": {"arrive_by": "arrive", "leave_at_or_after": "leave", "leave_at": "leave"},
+    "[taxi]": {"arrive_by": "arrive", "leave_at_or_after": "leave", "leave_at": "leave"},
     "[hotel]": {"accommodation_type": "type"},
 }
 

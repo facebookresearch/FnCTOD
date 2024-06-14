@@ -1,0 +1,1246 @@
+- service_name: restaurant
+  description: restaurant reservation
+  slots:
+  - name: restaurant-people
+    description: number of guests
+    possible_values:
+    - '2'
+    - '4'
+    - '6'
+    - six
+    - '3'
+    - '5'
+    - '12'
+    - '8'
+    - '1'
+    - '10'
+    - '9'
+    - three
+    - '7'
+    - four
+    - Just two
+    - 22 people including the children
+    - '15'
+    - '25'
+    - '20'
+    - '16'
+    is_categorical: false
+  - name: restaurant-food
+    description: cuisine preference
+    possible_values:
+    - Italian
+    - American
+    - Indian
+    - Chinese
+    - steak
+    - italian
+    - chinese
+    - mexican
+    - french
+    - sushi
+    - German
+    - Cajun
+    - Japanese
+    - Asian
+    - cuban
+    - jamaican
+    - asian
+    - Korean
+    - Polish
+    - american
+    is_categorical: false
+  - name: restaurant-city
+    description: restaurant city
+    possible_values:
+    - Boston
+    - Seattle
+    - Philadelphia
+    - NYC
+    - Buffalo
+    - seattle
+    - Raleigh
+    - eugene
+    - portland
+    - Anchorage
+    - Atlanta
+    - Las Vegas
+    - Charleston
+    - Detroit
+    - wilmington
+    - Houston
+    - Washington D.c
+    - Washington
+    - Brimingham
+    - philadelphi
+    is_categorical: false
+  - name: restaurant-time
+    description: reservation time
+    possible_values:
+    - 6Pm
+    - 6:30pm
+    - 9pm
+    - 7pm
+    - 6:00 PM
+    - '6'
+    - 5PM
+    - 5 PM
+    - 5pm
+    - 1pm
+    - 8 p.m
+    - around 6pm
+    - 6PM
+    - 8pm
+    - 5:30pm
+    - 6 PM
+    - '6:30'
+    - '7:20'
+    - 2pm
+    - '7:45'
+    is_categorical: false
+  - name: restaurant-date
+    description: reservation date
+    possible_values:
+    - tomorrow
+    - Monday
+    - March 18th
+    - tomorrow evening
+    - April 28
+    - Sunday, April 10
+    - March 14th
+    - sunday
+    - Tuesday
+    - Saturday night
+    - Saturday
+    - Sundays
+    - tonight
+    - Friday night
+    - today March 9th
+    - April 30
+    - 3\/13\/2016
+    - March 24th
+    - Friday, 3/11/2016
+    - 3/16/2016
+    is_categorical: false
+  - name: restaurant-state
+    description: restaurant state
+    possible_values:
+    - NC
+    - oregon
+    - AK
+    - SC
+    - NY
+    - nc
+    - DC
+    - AL
+    - TN
+    - California
+    - IL
+    - ca
+    - GA
+    - Texas
+    - MA
+    - FL
+    - WA
+    - MI
+    - NV
+    - Al
+    is_categorical: false
+  - name: restaurant-guest
+    description: guest's full name
+    possible_values:
+    - DiCaprio
+    - John Smith
+    - jack smith
+    - John Clark
+    - Brenda
+    - Joe Simms
+    - Roger Rabbie
+    - Dan Lowe
+    - John Cole
+    - longarm
+    - Judson Mills
+    - Ineeda Tavel
+    - Richard Bloom
+    - Paul Hollywood
+    - pro_2016-03-10T22-44-37_768733d1-9484-4753-8dc6-94b52441fd78
+    - Jones
+    - Niles Crane
+    - Mike Mitchell
+    - William Jones
+    - PETA
+    is_categorical: false
+  - name: restaurant-name
+    description: restaurant name
+    possible_values:
+    - IndeBlue sounds awesoem
+    - Oshun
+    - Sen of Japan
+    - Il Terrazzo Carmine
+    - Fado Irish Pub
+    - Tango
+    - Cafe Campagne
+    - Vinnie's Steakhouse and Tavern
+    - Dragonwell Bistro
+    - Does Lacroix Restaurant
+    - Sullivan's Steakhouse
+    - Spitfire
+    - al boccalino
+    - Hard Rock Cafe
+    - Myriad Gastro Pub
+    - Wing Lei
+    - Nirlep Indian Restaurant
+    - Taste of India
+    - Capital Grille
+    - Palisade
+    is_categorical: false
+  - name: restaurant-type
+    description: type of restaurant
+    possible_values:
+    - romantic
+    - the fanciest restaurant
+    - upperclass
+    - steak house
+    - good family restaurant
+    - vegan
+    - wheelchair accessible
+    - fancy
+    - pan asian
+    - American restaurant
+    - Hibachi place
+    - steakhouse
+    - Deli
+    - dessert restaurant
+    - top rated
+    - gluten free
+    - vegetarian
+    - The Wild Horse
+    - seafood
+    - kid friendly restaurant
+    is_categorical: false
+  - name: restaurant-food
+    description: dish type
+    possible_values:
+    - Rueben sandwich
+    - crepes
+    - banana pancakes
+    - Lobster Sarah
+    - burrito
+    - sushi
+    - seafood
+    - lobster
+    - pizza
+    - crawdads
+    - Ehtiopian
+    - american
+    - Mexican food
+    - ribs
+    - steak and seafood
+    - low-calorie
+    - macaroni and cheese
+    - gluten free
+    - steak
+    - any
+    is_categorical: false
+  - name: restaurant-mealtype
+    description: meal type
+    possible_values:
+    - anniversary dinner
+    - lunch
+    - brunch
+    - dinner
+    - breakfast
+    - family meal
+    - supper
+    - dining
+    - business lunch
+    - luncheon
+    - lunch buffet
+    - Champagne Brunch
+    - pre-burglary
+    - birthday dinner
+    - diner
+    - upscale dinner
+    - casual diner
+    - elegant breakfast
+    - bbq
+    - Burgers
+    is_categorical: false
+  - name: restaurant-rating
+    description: restaurant rating
+    possible_values:
+    - 3-star
+    - 5 star
+    - top three
+    - Top three total
+    - top 10
+    - 4 1/2 star
+    - '5'
+    - best
+    - the top
+    - top rated
+    - top 3
+    - highly rated
+    - five star
+    - highest
+    - 4-star
+    - the highest
+    - best rated
+    - high rated
+    - 4.5/5 or better
+    - the best
+    is_categorical: false
+  - name: restaurant-occasion
+    description: occasion type
+    possible_values:
+    - party
+    - anniversary
+    - date
+    - young
+    - birthday
+    - host a child's party
+    - great food and atmosphere
+    - bachelorette party
+    - propose
+    - promotion
+    - wedding
+    - week visiting family
+    - birthday party
+    - rehearsal
+    - good family friendly
+    - baby shower
+    - engagement party
+    - a first date
+    - business meeting
+    - a girls night out
+    is_categorical: false
+  - name: restaurant-address
+    description: restaurant address
+    possible_values:
+    - new hanover county
+    - largo florida
+    - downtown
+    - downtown Seattle
+    - paghetti Brothers 3213 Scott St
+    - windy hill
+    - Marina Blvd. at Fort Mason
+    - Palm Beach
+    - Newport beach
+    - 3213 Scott St
+    - wrightsville beach
+    - 1200 9th Avenue
+    - Richmond, VA
+    - in Brooklyn
+    - near the aquarium
+    - Beverly Hills
+    - the main strip
+    - myrtle beach
+    - carolina beach
+    - in the Broadway theater area
+    is_categorical: false
+  - name: restaurant-pricing
+    description: restaurant pricing
+    possible_values:
+    - cheap food place
+    - any
+    - most expensive
+    - the most expensive
+    - some relatively cheap
+    - anything
+    - $30 per person
+    - medium pricing point
+    - cheap
+    - less than$18
+    - don't matter
+    - not too expensive
+    - casual
+    - $$$ or higher
+    - $75 per person
+    - inexpensive
+    - $30 and under
+    - Up to $20 per dish
+    - affordable
+    - under $40 a perso.
+    is_categorical: false
+  - name: restaurant-atmosphere
+    description: atmosphere type
+    possible_values:
+    - upscale
+    - upscale steakhouse
+    - romantic
+    - casual
+    - cozy
+    - Upsale
+    - jazzy
+    - causual
+    - kid friendly
+    - casual family friendly
+    - fancy
+    - formal
+    - family friendly
+    - gay friendly
+    - casual restaurant
+    - really nice and formal
+    - upscale and quiet
+    - the most casual
+    - quiet
+    - rustic
+    is_categorical: false
+  - name: restaurant-distance
+    description: distance preference
+    possible_values:
+    - close to the Lincoln Memorial
+    - within 30 miles
+    - nearby
+    - near 03060
+    - near the Space Needle
+    - near the Briar Street Theatre
+    - near
+    - near the Auditorium Theatre
+    - downtown
+    - 15 miles
+    - near that tall tower thing from the worlds fair
+    - center City
+    - near seattle airport
+    - Ballard neighborhood
+    - the nearest
+    - near the seattle airport
+    - downtown Inner Harbor
+    - near LAX Airport
+    - near me
+    - close to a bus stop
+    is_categorical: false
+  - name: restaurant-postcode
+    description: restaurant zip
+    possible_values:
+    - '07302'
+    - '98144'
+    - '10014'
+    - '85201'
+    - '94123'
+    - '92628'
+    - '94145'
+    - 07628
+    - '89123'
+    - '94122'
+    - '91910'
+    - '93380'
+    - '32025'
+    - '98112'
+    - '93304'
+    - '10019'
+    - '94704'
+    - '91505'
+    - '94104'
+    - '85026'
+    is_categorical: false
+  - name: restaurant-seating
+    description: seating preference
+    possible_values:
+    - outdoor
+    - available
+    - landscaped garden
+    - outdoor seating
+    - room
+    - patio
+    - outside
+    - window seat
+    - outdoor table
+    - Priority Seating
+    - bar table
+    - heated outdoor seating
+    - view of the river
+    - '40'
+    is_categorical: false
+  - name: restaurant-dress_code
+    description: dress code
+    possible_values:
+    - dress
+    - formal
+    - casual
+    - buisness
+    - fancy
+    - upscale
+    - strict dress code
+    - require a jacket
+    - coat and tie
+    - 'no'
+    - business casual attire
+    - theme sexy uniforms
+    - casual attire
+    - strict
+    - high dress sandard
+    is_categorical: false
+  - name: restaurant-kids
+    description: number of children
+    possible_values:
+    - '1'
+    - '7'
+    - '30'
+    - '3'
+    - '12'
+    - Eight
+    - '2'
+    - '4'
+    - '6'
+    - '10'
+    is_categorical: false
+  actions:
+  - name: inform
+    description: provide information
+  - name: multiple_choice
+    description: present options
+  - name: request
+    description: request information
+  - name: greeting
+    description: ''
+  - name: confirm_question
+    description: verify the query
+  - name: thanks
+    description: ''
+  - name: confirm_answer
+    description: confirm the response
+  - name: closing
+    description: end the conversaiton
+  - name: welcome
+    description: ''
+  - name: deny
+    description: ''
+  - name: not_sure
+    description: admit uncertainty
+- service_name: movie
+  description: movie ticket booking
+  slots:
+  - name: movie-description
+    description: movie description
+    possible_values:
+    - super hero
+    - family
+    - good
+    - best
+    - good drama movie
+    - not too intense
+    - the first showing
+    - New releases
+    - sports related
+    - the most popular
+    - family movie
+    - top rated
+    - funny
+    - high ratings
+    - good christian film
+    - highest rated
+    - good flick
+    - serves seafood in the Seattle area
+    - highest rated Kids movie
+    - oscar winning film
+    is_categorical: false
+  - name: movie-date
+    description: preferred time for the movie
+    possible_values:
+    - Thursday afternoon
+    - March 15th
+    - tonight
+    - monday night
+    - March 14th
+    - Sunday 3\/20
+    - tonight Sunday
+    - tomorrow
+    - tomorrow night
+    - Friday
+    - Thursday
+    - Wednesday
+    - 3\/10
+    - thursday
+    - this weekend
+    - tomorrow evening
+    - Saturday night
+    - today
+    - Friday night
+    - Saturday 3/19
+    is_categorical: false
+  - name: movie-name
+    description: movie name
+    possible_values:
+    - The Young Messiah
+    - The Other Side Of The Door
+    - deadpool
+    - Zootopia
+    - 10 Cloverfield Lane
+    - Miracle from Heaven
+    - Eddie the Eagle
+    - Meet The Blacks
+    - Risen
+    - Gods of Egypt
+    - spotlight
+    - Kunfu Panda 3
+    - Whiskey Tango Foxtrot
+    - London Has Fallen
+    - the witch
+    - Marguerite
+    - My Big Fat Greek Wedding
+    - zootopia
+    - Zoolander 2
+    - revenant
+    is_categorical: false
+  - name: movie-people
+    description: number of tickets
+    possible_values:
+    - '2'
+    - '1'
+    - two
+    - '3'
+    - '4'
+    - '10'
+    - '6'
+    - '7'
+    - three
+    - '5'
+    - one
+    - '11'
+    - '8'
+    - '9'
+    - '15'
+    - five
+    - '12'
+    - Four
+    - '18'
+    - six
+    is_categorical: false
+  - name: movie-theater
+    description: specific theater name
+    possible_values:
+    - St. Louis
+    - anywhere
+    - AMC Pacific Place 11
+    - UA Showcase theater
+    - Regal Meridian 16
+    - AMC 600
+    - AMC
+    - The AMC Westminister Promendae
+    - AMC Westshore Plaza
+    - Any theater is fine
+    - the Regal Cinema
+    - Metreon
+    - South Point Casino
+    - the monaco theater
+    - the amc
+    - Regal Texas Station
+    - AMC Showplace
+    - The Pearl theater
+    - MJR 15
+    - the Regal Meridian 16
+    is_categorical: false
+  - name: movie-city
+    description: city
+    possible_values:
+    - Seattle
+    - las vegas
+    - Coral Springs
+    - Austin
+    - Chicago
+    - Miami
+    - Boulder
+    - Tampa
+    - Glendale
+    - Lincoln
+    - Philadelphia
+    - Dallas
+    - Altanta
+    - San Diego
+    - Brooklyn
+    - San Francisco
+    - miami
+    - Huntsville
+    - san francisco
+    - Birmingham
+    is_categorical: false
+  - name: movie-state
+    description: state
+    possible_values:
+    - FL
+    - TX
+    - IL
+    - Colorado
+    - California
+    - NE
+    - CA
+    - Al
+    - AL
+    - NV
+    - NY
+    - tx
+    - mass
+    - PA
+    - MI
+    - VT
+    - oregon
+    - nv
+    - ri
+    - CO
+    is_categorical: false
+  - name: movie-postcode
+    description: zip
+    possible_values:
+    - '33076'
+    - '94103'
+    - '55306'
+    - '22408'
+    - '33436'
+    - '8550'
+    - '94109'
+    - '28212'
+    - '62535'
+    - '93304'
+    - '48067'
+    - 03835
+    - 08534
+    - '93308'
+    - '70072'
+    - '98119'
+    - '92111'
+    - '48316'
+    - '37849'
+    - 07628
+    is_categorical: false
+  - name: movie-starttime
+    description: preferred time for the movie
+    possible_values:
+    - Any matinee
+    - 1:30pm
+    - 4:40 PM
+    - around 10PM
+    - '4:50'
+    - 7pm
+    - 8:30 PM
+    - '9'
+    - 8PM
+    - after 8 pm mountain time
+    - 9:35pm
+    - about 4pm
+    - from 9 AM to 4 PM
+    - 6PM
+    - 10:00pm
+    - '730'
+    - night
+    - Around 9:00PM
+    - 8:30pm
+    - The earliest showtime.
+    is_categorical: false
+  - name: movie-actress
+    description: lead actress
+    possible_values:
+    - Jesse Owens
+    - Jennifer Lawrence
+    - Tina Fey
+    - Melissa McCarthy
+    - melissa mcarthy
+    - Jennifer Garner
+    - tina fey
+    is_categorical: false
+  - name: movie-genre
+    description: movie genre
+    possible_values:
+    - good kids movies
+    - action
+    - thriller
+    - comedy
+    - horror
+    - family
+    - love
+    - animated flick
+    - drama
+    - Western
+    - documentary
+    - family friendly
+    - romantic
+    - scary
+    - for children
+    - a lot of violence and gore and pain and suffering
+    - comedies
+    - animated
+    - a light theme and high comedy
+    - romantic comedy
+    is_categorical: false
+  - name: movie-video_format
+    description: video format
+    possible_values:
+    - IMAX 3D
+    - 2D
+    - 3D
+    - standard
+    - 3d
+    - IMAX
+    - 2D IMAX
+    - 2d
+    - standard 2D
+    - regular
+    - imax
+    - without 3D
+    - non-3d
+    - IMAX 3d
+    - Imax 3d
+    - XD
+    - imax 3d
+    - Standard 2D
+    - IMX 3D
+    - Either
+    is_categorical: false
+  - name: movie-kids
+    description: number of tickets for kids
+    possible_values:
+    - '2'
+    - '3'
+    - '1'
+    - '15'
+    - '20'
+    - '6'
+    - '0'
+    - '4'
+    - none
+    is_categorical: false
+  - name: movie-mpaa_rating
+    description: mpaa rating
+    possible_values:
+    - pg-13
+    - R
+    - PG
+    - pg-13 rated
+    - any
+    - PG13
+    - not rated R
+    - safe for 7 years olds
+    - G
+    - R-Rated
+    - not rated r
+    - pg13 or lower
+    - pg13
+    - g
+    - Pg
+    - PG-rated
+    - above PG-13
+    is_categorical: false
+  - name: movie-distance
+    description: distance preference
+    possible_values:
+    - near 55306
+    - near the Bellagio
+    - downtown
+    - downtown seattle
+    - southeast
+    - near bakersfield california
+    - close to downtown
+    - east side
+    - near me
+    - in the Valley
+    - central Avenue
+    - elizabeth town
+    - closer to 60062
+    - in my area
+    - near
+    - nearby
+    - northern San Francisco
+    - near 98119
+    - seaside
+    - closest
+    is_categorical: false
+  - name: movie-seating
+    description: seating preference
+    possible_values:
+    - in the middle
+    - recliner seating
+    - recliner
+    is_categorical: false
+  - name: movie-actor
+    description: lead actor
+    possible_values:
+    - Ryan Reynolds
+    - Cohen
+    - Bradley Cooper
+    - the Roc
+    - tom cruise
+    - nicolas cage
+    - paul rudd
+    - tear jerkers
+    - Brad Pitt
+    - John Goodman
+    - will smith
+    - Brad pitt
+    - Bruce Willis
+    is_categorical: false
+  - name: movie-price
+    description: ticket price
+    possible_values:
+    - less than $10
+    - $50
+    - moderately
+    - cheapest
+    - cheaper
+    - the cheapest
+    - 50% off
+    - regular
+    - expensive
+    - '5.00'
+    - less expensive
+    is_categorical: false
+  - name: movie-critic_rating
+    description: critic rating
+    possible_values:
+    - top reviewed
+    - lowest rated movie
+    - the lowest
+    - high
+    - 3 out of 5 stars
+    - best
+    - top rated
+    - horrible
+    - top
+    - the highest
+    - good
+    - the top
+    - high rated
+    is_categorical: false
+  - name: movie-series
+    description: movie series
+    possible_values:
+    - the divergent series
+    - Divergent
+    - divergence
+    - Superman movie
+    - Divergent Series
+    - The Divergent
+    - Divergent Series movie
+    is_categorical: false
+  - name: movie-theater_chain
+    description: theater chain
+    possible_values:
+    - regal
+    - AMC
+    - Regal theater
+    is_categorical: false
+  actions:
+  - name: inform
+    description: provide information
+  - name: multiple_choice
+    description: present options
+  - name: request
+    description: request information
+  - name: greeting
+    description: ''
+  - name: confirm_question
+    description: verify the query
+  - name: thanks
+    description: ''
+  - name: confirm_answer
+    description: confirm the response
+  - name: closing
+    description: end the conversaiton
+  - name: welcome
+    description: ''
+  - name: deny
+    description: ''
+  - name: not_sure
+    description: admit uncertainty
+- service_name: taxi
+  description: arranging taxi rides for customers
+  slots:
+  - name: taxi-people
+    description: number of passengers
+    possible_values:
+    - '2'
+    - '1'
+    - '4'
+    - '12'
+    - '3'
+    - '5'
+    - '6'
+    - '10'
+    - '8'
+    - five
+    - three
+    - one
+    - two
+    - five up
+    - '7'
+    - at least 5 people but not more than 10
+    - four
+    - '15'
+    - uno
+    - '11'
+    is_categorical: false
+  - name: taxi-state
+    description: state
+    possible_values:
+    - OH
+    - MI
+    - WA
+    - nc
+    - Texas
+    - DC
+    - Florida
+    - TX
+    - MD
+    - VA
+    - MA
+    - AL
+    - Brazil
+    - FL
+    - Indiana
+    - IL
+    - New Hampshire
+    - NH
+    - California
+    - MN
+    is_categorical: false
+  - name: taxi-departure
+    description: pickup location
+    possible_values:
+    - Ciro's
+    - Akron Canton airport
+    - days inn on market street
+    - Milton Martin Honda
+    - 6626 Coleman
+    - 100 bell st
+    - ihop on market street
+    - Sesame Place theme park
+    - Miami International Airport
+    - Joe's Burgers on Ash Lane
+    - Avenue Suites Georgetown
+    - Planet Hollywood
+    - 5960 Greenville Ave
+    - the Orlando Airport
+    - navy pier
+    - Dr. Phillip's High School
+    - Raintree Inn & Suites 3675 S Loop W Fwy
+    - LAX airport
+    - the Seattle Art Museum
+    - the train station
+    is_categorical: false
+  - name: taxi-departure_city
+    description: pickup city
+    possible_values:
+    - Canton
+    - Dearborn
+    - Seattle
+    - wilmington
+    - Las Vegas
+    - Dallas
+    - Orlando
+    - Houston
+    - San Diego
+    - NYC
+    - Miami
+    - Bethesda
+    - Chicago
+    - California
+    - Jacksonville
+    - Lowell
+    - Birmingham
+    - Fort Lauderdale
+    - Minneapolis
+    - Indianapolis
+    is_categorical: false
+  - name: taxi-destination
+    description: dropoff location
+    possible_values:
+    - SpringHill Suites Houston Downtown/Convention Center
+    - 529 Sandpiper Lane
+    - mayfaire theater
+    - Hartsfield airport
+    - Detroit Metro Airport
+    - 200 8th Ave N
+    - fort fisher state park
+    - Six Flags
+    - Bayside Marketplace
+    - Hamm's Tires on S Carroll Ave
+    - Smithsonian Museum of Natural History
+    - the Downtown Container Park
+    - nearest Burger King
+    - Disney's Osprey Golf Course
+    - AMC Showplace Galewood 14
+    - The Orlando airport
+    - Miller Outdoor Theatre
+    - Getty Center on Getty Center Dr
+    - The Space Needle
+    - Sea World
+    is_categorical: false
+  - name: taxi-destination_city
+    description: dropoff city
+    possible_values:
+    - Wadsworth
+    - Dallas
+    - Seattle
+    - Alexandria
+    - Miami
+    - LegoLand
+    - Pittsburgh
+    - Houston
+    - downtown
+    - wilmington
+    - Washington.DC
+    - las vegas
+    - Minneapolis
+    - Atlanta
+    - new orleans
+    - atlanta
+    - Knoxville
+    - Indianapolis
+    - Princeton
+    - Los Angeles
+    is_categorical: false
+  - name: taxi-date
+    description: pickup date
+    possible_values:
+    - tomorrow
+    - Wednesday 3/24
+    - Wednesday night
+    - Sunday
+    - today
+    - tomorrow evening
+    - tonight
+    - April 5, 2016
+    - Tomorrow morning
+    - April 16th
+    - 3/19/2016
+    - Tuesday
+    - Monday March 22nd
+    - 3\/22
+    - Monday
+    - this morning
+    - 04/05
+    - 04/04
+    - April 9th
+    - monday
+    is_categorical: false
+  - name: taxi-leave
+    description: pickup time
+    possible_values:
+    - 10pm
+    - 3PM
+    - 9,date
+    - 3 PM
+    - 9pm
+    - 10am
+    - 2 pm
+    - 4pm
+    - 3:00pm
+    - '5'
+    - 7:00pm
+    - 4:00pm
+    - 7pm
+    - 3:15pm
+    - at 6 AM
+    - ASAP
+    - '5:45'
+    - 8am
+    - around noon
+    - 12 pm
+    is_categorical: false
+  - name: taxi-car_type
+    description: cat type
+    possible_values:
+    - Uberblack
+    - uberX
+    - UberSelect
+    - uberhop
+    - uber
+    - uberXL
+    - XLS
+    - uberxl
+    - UberX
+    - Uberx
+    - ubersuv
+    - uberx
+    - UberBlack
+    - Uber XL
+    - Uber SUV
+    - uberLUX
+    - UberBLACK
+    - UberFamily
+    - uberFAMILY
+    - Uberselect
+    is_categorical: false
+  - name: taxi-cost
+    description: estimated fare range
+    possible_values:
+    - $40-53
+    - $84-108
+    - $11-12 surged 250%
+    - $12-16
+    - $7-9
+    - $45-60
+    - $6-8
+    - the next cheapest
+    - $22-29
+    - $10-13
+    - 28-37
+    - $15-20
+    - $6-9
+    - $21-28
+    - $6
+    - $81-106
+    - $100
+    - 17-23
+    - 8-11
+    - $7-10
+    is_categorical: false
+  - name: taxi-name
+    description: passenger name
+    possible_values:
+    - Kryssyy Bode
+    - Roger
+    - Ray
+    - Scrooge McDuck
+    - Mike
+    - Besty Ross
+    - Megan Madox
+    - John Franklin
+    - Brenda Walsh
+    - David
+    - MTC Arcade
+    - Betsy Ross
+    - UberAwesomeDude
+    - christina smith
+    - Shoptil i. Drop
+    - Snow Queen
+    - McLovin
+    - Meagan
+    - Zack Morris
+    - Toby McGuire
+    is_categorical: false
+  - name: taxi-city
+    description: city
+    possible_values:
+    - New York
+    - Los Angeles
+    - seattle
+    - San Diego
+    - New Orleans
+    - San Diege
+    - Fresno
+    - sacramento
+    - San Antonio
+    is_categorical: false
+  - name: taxi-postcode
+    description: zip
+    possible_values:
+    - '98119'
+    is_categorical: false
+  actions:
+  - name: request
+    description: request information
+  - name: inform
+    description: provide information
+  - name: confirm_answer
+    description: confirm the response
+  - name: multiple_choice
+    description: present options
+  - name: greeting
+    description: ''
+  - name: confirm_question
+    description: verify the query
+  - name: closing
+    description: end the conversaiton
+  - name: thanks
+    description: ''
+  - name: welcome
+    description: ''

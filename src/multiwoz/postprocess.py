@@ -130,6 +130,7 @@ def load_schema(dataset_version="2.1"):
                     "accommodation_type",
                     "leave_at_or_after",
                     "arrive_by",
+                    "leave_at"
                 ]:
                     slot["is_informable"] = True
                 else:

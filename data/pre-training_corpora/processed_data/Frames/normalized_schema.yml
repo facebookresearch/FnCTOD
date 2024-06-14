@@ -1,0 +1,132 @@
+- service_name: travel
+  description: assist the user in planning and booking trips
+  slots:
+  - name: origin_city
+    description: origin city
+    possible_values: []
+    is_categorical: false
+  - name: destination_city
+    description: destination city
+    possible_values: []
+    is_categorical: false
+  - name: budget
+    description: budget
+    possible_values: []
+    is_categorical: false
+  - name: number_of_adults
+    description: number of adults
+    possible_values: []
+    is_categorical: false
+  - name: number_of_children
+    description: number of children
+    possible_values: []
+    is_categorical: false
+  - name: seat
+    description: seat
+    possible_values: []
+    is_categorical: false
+  - name: start_date
+    description: start date
+    possible_values: []
+    is_categorical: false
+  - name: end_date
+    description: end date
+    possible_values: []
+    is_categorical: false
+  - name: max_duration
+    description: max duration
+    possible_values: []
+    is_categorical: false
+  - name: category
+    description: category
+    possible_values: []
+    is_categorical: false
+  - name: guest_rating
+    description: guest rating
+    possible_values: []
+    is_categorical: false
+  - name: ref_anaphora
+    description: ref anaphora
+    possible_values: []
+    is_categorical: false
+  - name: min_duration
+    description: min duration
+    possible_values: []
+    is_categorical: false
+  - name: count_destination_city
+    description: count destination city
+    possible_values: []
+    is_categorical: false
+  - name: count_name
+    description: count name
+    possible_values: []
+    is_categorical: false
+  - name: price
+    description: price
+    possible_values: []
+    is_categorical: false
+  - name: name
+    description: name
+    possible_values: []
+    is_categorical: false
+  - name: impl_anaphora
+    description: impl anaphora
+    possible_values: []
+    is_categorical: false
+  - name: count
+    description: count
+    possible_values: []
+    is_categorical: false
+  - name: duration
+    description: duration
+    possible_values: []
+    is_categorical: false
+  - name: vicinity
+    description: vicinity
+    possible_values: []
+    is_categorical: false
+  - name: amenities
+    description: amenities
+    possible_values: []
+    is_categorical: false
+  - name: count_seat
+    description: count seat
+    possible_values: []
+    is_categorical: false
+  - name: parking
+    description: parking
+    possible_values: []
+    is_categorical: false
+  actions:
+  - name: request
+    description: ask for specific information
+  - name: offer
+    description: provide options
+  - name: inform
+    description: provide information
+  - name: negate
+    description: deny a statement
+  - name: sorry
+    description: express regret or apology
+  - name: goodbye
+    description: end the conversation
+  - name: no_result
+    description: indicate no results were found
+  - name: suggest
+    description: suggest offers or ideas
+  - name: hearmore
+    description: inquire about whether more details are needed
+  - name: thankyou
+    description: express gratitude
+  - name: confirm
+    description: verify information
+  - name: canthelp
+    description: indicate inability to help
+  - name: you_are_welcome
+    description: responding to gratitude or thanks
+  - name: affirm
+    description: confirm or agree with a statement
+  - name: greeting
+    description: say hello or welcome
+  - name: reject
+    description: reject something
