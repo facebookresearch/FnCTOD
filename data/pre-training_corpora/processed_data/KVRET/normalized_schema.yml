@@ -1,0 +1,136 @@
+- service_name: car_assistant
+  description: assist the user in car-related activities and appointments
+  slots:
+  - name: address
+    description: address
+    possible_values: []
+    is_categorical: false
+  - name: agenda
+    description: agenda
+    possible_values:
+    - go over budget
+    - discuss the merger
+    - discuss the company picnic
+    - go over quarterly report
+    - onboard new members
+    - discuss dress code
+    - sign the NDA
+    is_categorical: false
+  - name: date
+    description: date
+    possible_values:
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    - sunday
+    is_categorical: false
+  - name: distance
+    description: distance
+    possible_values:
+    - 1 mile
+    - 2 miles
+    - 3 miles
+    - 4 miles
+    - 5 miles
+    is_categorical: false
+  - name: event
+    description: event
+    possible_values:
+    - taking medicine
+    - conference
+    - dinner
+    - lab appointment
+    - yoga activity
+    - tennis activity
+    - doctor appointment
+    is_categorical: false
+  - name: location
+    description: location
+    possible_values:
+    - oakland
+    - san mateo
+    - san jose
+    - grand rapids
+    - boston
+    - new york
+    - cleveland
+    - downtown chicago
+    - seattle
+    - los angeles
+    is_categorical: false
+  - name: party
+    description: party
+    possible_values:
+    - sales team
+    - HR
+    - executive team
+    - infrastructure team
+    - vice president
+    - boss
+    - management
+    - Tom
+    - Jon
+    - Martha
+    is_categorical: false
+  - name: poi
+    description: point of interest
+    possible_values: []
+    is_categorical: false
+  - name: poi_type
+    description: point of interest type
+    possible_values:
+    - friends house
+    - home
+    - coffee
+    - tea
+    - chinese restaurant
+    - pizza restaurant
+    - grocery store
+    - rest stop
+    - shopping center
+    - parking garage
+    is_categorical: false
+  - name: room
+    description: room
+    possible_values:
+    - conference room 100
+    - conference room 102
+    - conference room 50
+    is_categorical: false
+  - name: time
+    description: time
+    possible_values:
+    - 1pm
+    - 2pm
+    - 3pm
+    - 4pm
+    - 5pm
+    is_categorical: false
+  - name: traffic_info
+    description: traffic information
+    possible_values:
+    - no traffic
+    - moderate traffic
+    - heavy traffic
+    - road block nearby
+    - car collision nearby
+    is_categorical: false
+  - name: weather_attribute
+    description: weather attribute
+    possible_values:
+    - lowest temperature
+    - highest temperature
+    - overcast
+    - snow
+    - stormy
+    - hail
+    - hot
+    - rain
+    - cold
+    - clear skies
+    is_categorical: false
+  intents: []
+  actions: []

@@ -1,0 +1,169 @@
+- service_name: restaurant
+  description: find places to dine and whet your appetite
+  slots:
+  - name: restaurant-pricerange
+    description: price budget for the restaurant
+    possible_values:
+    - cheap
+    - expensive
+    - moderate
+    is_categorical: true
+    is_informable: true
+    is_requestable: true
+  - name: restaurant-area
+    description: area or place of the restaurant
+    possible_values:
+    - centre
+    - east
+    - north
+    - south
+    - west
+    is_categorical: true
+    is_informable: true
+    is_requestable: true
+  - name: restaurant-food
+    description: the cuisine of the restaurant you are looking for
+    possible_values:
+    - indian
+    - thai
+    - turkish
+    - french
+    - european
+    - chinese
+    - afghan
+    - african
+    - austrian
+    - barbeque
+    - basque
+    - belgian
+    - bistro
+    - brazilian
+    - british
+    - canapes
+    - cantonese
+    - caribbean
+    - catalan
+    - chinese
+    - christmas
+    - corsica
+    - creative
+    - crossover
+    - cuban
+    - danish
+    - eastern european
+    - english
+    - eritrean
+    - fusion
+    - gastropub
+    - german
+    - greek
+    - halal
+    - hungarian
+    - indonesian
+    - international
+    - irish
+    - italian
+    - jamaican
+    - japanese
+    - korean
+    - kosher
+    - latin american
+    - lebanese
+    - light bites
+    - malaysian
+    - mediterranean
+    - mexican
+    - middle eastern
+    - modern american
+    - modern eclectic
+    - modern european
+    - modern global
+    - molecular gastronomy
+    - moroccan
+    - new zealand
+    - north african
+    - north american
+    - north indian
+    - northern european
+    - panasian
+    - persian
+    - polish
+    - polynesian
+    - portuguese
+    - romanian
+    - russian
+    - scandinavian
+    - scottish
+    - seafood
+    - singaporean
+    - south african
+    - south indian
+    - spanish
+    - sri lankan
+    - steakhouse
+    - swedish
+    - swiss
+    - the americas
+    - traditional
+    - tuscan
+    - unusual
+    - vegetarian
+    - venetian
+    - vietnamese
+    - welsh
+    - world
+    is_categorical: false
+    is_informable: true
+    is_requestable: true
+  - name: restaurant-address
+    description: address of the restaurant
+    is_categorical: false
+    is_informable: false
+    is_requestable: true
+  - name: restaurant-phone
+    description: phone number of the restaurant
+    is_categorical: false
+    is_informable: false
+    is_requestable: true
+  - name: restaurant-postcode
+    description: postal code of the restaurant
+    is_categorical: false
+    is_informable: false
+    is_requestable: true
+  - name: restaurant-reference
+    description: reference number of the restaurant booking
+    is_categorical: false
+    is_informable: false
+    is_requestable: true
+  - name: restaurant-name
+    description: name of the restaurant
+    possible_values: []
+    is_categorical: false
+    is_informable: false
+    is_requestable: true
+  intents:
+  - name: find_restaurant
+    description: search for places to wine and dine
+    is_transactional: false
+    required_slots: []
+    optional_slots:
+      restaurant-pricerange: dontcare
+      restaurant-area: dontcare
+      restaurant-food: dontcare
+      restaurant-name: dontcare
+      restaurant-bookday: dontcare
+      restaurant-bookpeople: dontcare
+      restaurant-booktime: dontcare
+  - name: book_restaurant
+    description: book a table at a restaurant
+    is_transactional: true
+    required_slots: []
+    optional_slots:
+      restaurant-pricerange: dontcare
+      restaurant-area: dontcare
+      restaurant-food: dontcare
+      restaurant-name: dontcare
+      restaurant-bookday: dontcare
+      restaurant-bookpeople: dontcare
+      restaurant-booktime: dontcare
+  actions:

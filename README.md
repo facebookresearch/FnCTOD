@@ -25,7 +25,7 @@ export OPENAI_API_KEY='XXXX'
 ```
 
 ## In-context Prompting
-Execute the following scripts located in the `./sh_folders/` directory to run inference with different models.
+Execute the following scripts located in the `./scripts/` directory to run inference with different models.
    1. `inference_chatgpt.sh`
    2. `inference_fnctod-llama.sh`
    3. `inference_oss_models.sh`
@@ -33,20 +33,20 @@ Execute the following scripts located in the `./sh_folders/` directory to run in
 ## Prompt-based Fine-tuning
 1. For each dataset used in the training, including CamRest676, MSE2E, SGD, Taskmaster, and WoZ, first process the data, then format it in our dialogue prompt for training. Here is an example for the SGD dataset:
 ```
-cd sh_folders
+cd scripts
 sh processing-sgd.sh
 sh prompting-sgd.sh
 
 ```
 2. Collect the data from different datasets: 
 ```
-cd sh_folders
+cd scripts
 sh create_finetunedata.sh
 ```
 
 3. Finetune FnCTOD-Llama2:
 ```
-cd sh_folders
+cd scripts
 sh finetune.sh
 ```
 
