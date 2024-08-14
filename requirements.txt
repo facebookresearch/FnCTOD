@@ -22,5 +22,5 @@ spacy-loggers==1.0.4
 tiktoken==0.6.0
 tokenizers==0.15.2
 --find-links https://download.pytorch.org/whl/torch_stable.html
-torch==2.1.0+cu121
+torch==2.2.0
 transformers==4.39.3
