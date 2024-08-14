@@ -10,7 +10,7 @@ numpy==1.24.3
 openai==0.27.7
 peft @ git+https://github.com/huggingface/peft.git@412d7bc985f52225be8d9a7abc6a0cf2d71b2415
 PyYAML==6.0
-requests==2.31.0
+requests==2.32.2
 responses==0.18.0
 safetensors==0.4.2
 scikit-learn==1.5.0
